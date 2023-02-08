@@ -1,0 +1,18 @@
+/* https://www.fontsquirrel.com/fonts/sen */
+
+@font-face {
+    font-family: 'Sen';
+    src: url(/fonts/sen-regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Sen';
+    src: url(/fonts/sen-bold.otf) format('opentype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Sen';
+    src: url(/fonts/sen-extrabold.otf) format('opentype');
+    font-weight: 800;
+}
