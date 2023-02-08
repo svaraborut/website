@@ -23,7 +23,7 @@ export function SecExperiences() {
                 company: 'Aindo',
                 link: 'https://www.aindo.com/',
                 role: 'Chief Technology Officer',
-                description: 'I currently am the leading a young team of very talented people toward disruptive innovations in the AI field.'
+                description: 'I currently am leading a young team of very talented people toward disruptive innovations in the AI field.'
             },
             {
                 company: 'Xtlan',

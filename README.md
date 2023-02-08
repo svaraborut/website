@@ -7,7 +7,8 @@ here:
 - [stage](https://svara-website.pages.dev)
 
 # Todo
-- Create 404 Page
+- ✅ Redirect all to home
+- ✅ Add black color to Mobile Chrome Bar
 - Internationalize
 - Fix SEO
 - Add SEO tags for sharing
