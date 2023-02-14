@@ -11,4 +11,5 @@ here:
 - ✅ Add black color to Mobile Chrome Bar
 - Internationalize
 - Fix SEO
-- Add SEO tags for sharing
+- ✅ Add SEO tags for sharing (Check OpenGraph [here](https://www.opengraph.xyz/))
+- Fix OG Image font not being Sen
