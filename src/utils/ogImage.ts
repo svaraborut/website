@@ -1,4 +1,5 @@
 import { createCanvas, registerFont } from 'canvas';
+import drawMultilineText from 'canvas-multiline-text';
 import colors from 'tailwindcss/colors'
 import fs from 'fs'
 import path from 'path'
@@ -56,20 +57,33 @@ export async function createOgImage(props: OgImageProps): Promise<string> {
     grd.addColorStop(0, colors.pink[600])
     grd.addColorStop(width, colors.fuchsia[600])
     context.fillStyle = grd
-    context.fillRect(margin, 0, width - 2 * margin, 8)
+    context.fillRect(margin, 0, width - 2 * margin, 16)
 
     // Bottom text in the corner
-    context.font = 'bold 100px Sen'
+    context.font = 'bold 120px Sen'
     context.fillStyle = colors.white
-    context.fillText(props.title, margin, 300)
+    context.fillText(props.title, margin, 250)
 
-    context.font = 'bold 60px Sen'
+    context.font = 'bold 80px Sen'
     context.fillStyle = colors.gray[500]
-    context.fillText(props.subtitle, margin, 390)
+    drawMultilineText(context as any, props.subtitle, {
+        rect: {
+            x: margin,
+            y: 270,
+            width: width - 2 * margin,
+            height: 200,
+        },
+        font: 'Sen',
+        verbose: false,
+        lineHeight: 1.4,
+        minFontSize: 80,
+        maxFontSize: 80,
+    })
+    // context.fillText(props.subtitle, margin, 390)
 
     context.font = 'bold 30px Sen'
     context.fillStyle = colors.gray[500]
-    context.fillText('svaraborut.com', margin, 550)
+    context.fillText('svaraborut.com', margin, height - margin)
 
     // Save
     const buff = canvas.toBuffer('image/png');
