@@ -17,13 +17,13 @@ export interface HomePageProps {
 
 export async function getStaticProps({ }) {
 
-    const title = 'I\'m Borut Svara'
-    const description = 'a tech expert based in Italy.'
+    const title = 'Borut Svara'
+    const description = 'I\'m Borut Svara, a tech expert based in Italy.'
 
     const ogImage = await createOgImage({
         path: './public/ogi',
-        title: title,
-        subtitle: description,
+        title: 'I\'m Borut Svara',
+        subtitle: 'a tech expert based in Italy.',
     })
 
     return {

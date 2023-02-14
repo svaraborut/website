@@ -12,4 +12,4 @@ here:
 - Internationalize
 - Fix SEO
 - ✅ Add SEO tags for sharing (Check OpenGraph [here](https://www.opengraph.xyz/))
-- Fix OG Image font not being Sen
+- ✅ Fix OG Image font not being Sen (works when compiled on CloudFlare / Linux)
