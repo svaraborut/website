@@ -45,7 +45,7 @@ export function SocialLinks(
         {
             Icon: BuildingOffice2Icon,
             heroicons: true,
-            name: 'Aindo Spa',
+            name: 'Aindo Srl',
             description: <>Where I <SpanFlash>Work</SpanFlash></>,
             url: 'https://aindo.com',
         },

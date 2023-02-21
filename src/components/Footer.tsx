@@ -33,7 +33,7 @@ export function Footer() {
 
             <div className='col-span-full flex justify-between text-gray-500'>
                 <p>© Copyright {year.toFixed(0)}</p>
-                <p>svaraborut.com</p>
+                <p>svara.io, svaraborut.com</p>
             </div>
 
         </Container>

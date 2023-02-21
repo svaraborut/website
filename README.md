@@ -1,9 +1,10 @@
 
-# www.svaraborut.com
+# svara.io, svaraborut.com
 My personal website build with `NEXT.js` and deployed on `CloudFlare Pages` for free. This project do not contain
 actions as the whole `CI/CD` process is automated through a private `CloudFlare` account. The website is deployed
 here:
-- [public](https://www.svaraborut.com)
+- [public 1](https://svara.io)
+- [public 2](https://svaraborut.com)
 - [stage](https://svara-website.pages.dev)
 
 # Todo
