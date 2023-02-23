@@ -31,3 +31,13 @@ export function StackOverflowIcon(props: SVGProps<SVGSVGElement>) {
         </svg>
     )
 }
+
+// https://commons.wikimedia.org/wiki/File:OnlyFans_Icon_2022.svg
+export function OnlyFansIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" {...props} viewBox="12.5 75 375 250">
+            <path d="M137.5 75a125 125 0 1 0 125 125 125 125 0 0 0-125-125Zm0 162.5A37.5 37.5 0 1 1 175 200a37.45 37.45 0 0 1-37.5 37.5Z" />
+            <path d="M278 168.75c31.76 9.14 69.25 0 69.25 0-10.88 47.5-45.38 77.25-95.13 80.87A124.73 124.73 0 0 1 137.5 325L175 205.81C213.55 83.3 233.31 75 324.73 75h62.77c-10.5 46.25-46.69 81.58-109.5 93.75Z" />
+        </svg>
+    )
+}

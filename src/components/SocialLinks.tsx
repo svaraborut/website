@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { GitHubIcon, LinkedinIcons, StackOverflowIcon } from '@/components/icons';
+import { GitHubIcon, LinkedinIcons, OnlyFansIcon, StackOverflowIcon } from '@/components/icons';
 import { BuildingOffice2Icon } from '@heroicons/react/24/outline';
 import { ReactComponentLike } from 'prop-types';
 import classNames from 'classnames';
@@ -8,6 +8,8 @@ import { SpanFlash } from '@/components/SpanFlash';
 export interface HeaderLink {
     Icon: ReactComponentLike
     heroicons?: boolean
+    mainOnly?: boolean
+    disabled?: boolean
     name: string
     description?: ReactNode
     url: string
@@ -49,6 +51,14 @@ export function SocialLinks(
             description: <>Where I <SpanFlash>Work</SpanFlash></>,
             url: 'https://aindo.com',
         },
+        {
+            Icon: OnlyFansIcon,
+            name: 'OnlyFans',
+            mainOnly: true,
+            disabled: true,
+            description: <>Just <SpanFlash>Kidding</SpanFlash></>,
+            url: '',
+        },
     ]
 
     return (
@@ -62,7 +72,7 @@ export function SocialLinks(
                     'flex-col space-y-4': !horizontal && !compact,
                 })}
         >
-            {links.map((lk, ix) => (
+            {links.filter(lk => !compact || !lk.mainOnly).map((lk, ix) => (
                 <a
                     key={ix}
                     className={classNames(
@@ -70,7 +80,10 @@ export function SocialLinks(
                         'group flex items-center transition-all duration-300',
                         compact ? 'p-2 space-x-4 rounded' : 'p-4 space-x-8 rounded-xl'
                     )}
+                    target='_blank'
+                    rel='noreferrer'
                     href={lk.url}
+                    onClick={lk.disabled ? (e => e.preventDefault()) : undefined}
                 >
                     <lk.Icon
                         className={classNames(
