@@ -4,6 +4,7 @@ import { SecSkillset } from '@/components/SecSkillset';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { createOgImage } from '@/utils/ogImage';
+import { HOSTNAME } from '@/conf';
 
 // Inspired by
 // https://webflow.com/made-in-webflow/website/Portfolio-Website-Free-Template
@@ -31,7 +32,7 @@ export async function getStaticProps({ }) {
             ogImage: `/ogi/${ogImage}`,
             title,
             description,
-            url: `https://svaraborut.com` // todo : automate
+            url: HOSTNAME.url,
         }
     }
 }

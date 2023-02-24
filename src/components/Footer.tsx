@@ -1,9 +1,7 @@
-import React, { ReactNode, useMemo } from 'react';
-import { BoltIcon } from '@heroicons/react/24/outline';
-import { ReactComponentLike } from 'prop-types';
+import React, { useMemo } from 'react';
 import { SocialLinks } from '@/components/SocialLinks';
 import { Container } from '@/components/Container';
-
+import { HOSTNAME, HOSTNAME_ALL } from '@/conf'
 
 export function Footer() {
 
@@ -15,7 +13,7 @@ export function Footer() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24'>
                 <p className='col-span-1 lg:col-span-2 xl:col-span-1 text-5xl md:text-6xl font-bold max-w-3xl'>
-                    SvaraBorut
+                    {HOSTNAME.name}
                 </p>
                 <div className='-mx-2 xl:hidden'>
                     <SocialLinks compact />
@@ -33,7 +31,7 @@ export function Footer() {
 
             <div className='col-span-full flex justify-between text-gray-500'>
                 <p>© Copyright {year.toFixed(0)}</p>
-                <p>svara.io, svaraborut.com</p>
+                <p>{HOSTNAME_ALL.map(x => x.name).join(', ')}</p>
             </div>
 
         </Container>

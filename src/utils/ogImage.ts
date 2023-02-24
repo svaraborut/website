@@ -4,6 +4,7 @@ import colors from 'tailwindcss/colors'
 import fs from 'fs'
 import path from 'path'
 import crypto from 'crypto'
+import { HOSTNAME } from '@/conf';
 
 export interface OgImageProps {
     path: string // Path to store the image
@@ -83,7 +84,7 @@ export async function createOgImage(props: OgImageProps): Promise<string> {
 
     context.font = 'bold 30px Sen'
     context.fillStyle = colors.gray[500]
-    context.fillText('svaraborut.com', margin, height - margin)
+    context.fillText(HOSTNAME.name, margin, height - margin)
 
     // Save
     const buff = canvas.toBuffer('image/png');

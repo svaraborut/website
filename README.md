@@ -4,8 +4,9 @@ My personal website build with `NEXT.js` and deployed on `CloudFlare Pages` for 
 actions as the whole `CI/CD` process is automated through a private `CloudFlare` account. The website is deployed
 here:
 - [public 1](https://svara.io)
-- [public 2](https://svaraborut.com)
 - [stage](https://svara-website.pages.dev)
+
+`www.svaraborut.com` & `svaraborut.com` are redirected to `svara.io`
 
 # Todo
 - ✅ Redirect all to home
