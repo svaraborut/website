@@ -51,14 +51,14 @@ export function SocialLinks(
             description: <>Where I <SpanFlash>Work</SpanFlash></>,
             url: 'https://aindo.com',
         },
-        {
-            Icon: OnlyFansIcon,
-            name: 'OnlyFans',
-            mainOnly: true,
-            disabled: true,
-            description: <>Just <SpanFlash>Kidding</SpanFlash></>,
-            url: '',
-        },
+        // {
+        //     Icon: OnlyFansIcon,
+        //     name: 'OnlyFans',
+        //     mainOnly: true,
+        //     disabled: true,
+        //     description: <>Just <SpanFlash>Kidding</SpanFlash></>,
+        //     url: '',
+        // },
     ]
 
     return (

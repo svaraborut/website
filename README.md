@@ -10,7 +10,7 @@ here:
 
 # Todo
 - ✅ Redirect all to home
-- ✅ Add black color to Mobile Chrome Bar
+- ✅ Add black color to Mobile Chrome Bar[openssl.cnf](..%2F..%2Fcom.aindo%2F_certs%2F_cert_aindo_io%2F2023%2Fopenssl.cnf)
 - Internationalize
 - Fix SEO
 - ✅ Add SEO tags for sharing (Check OpenGraph [here](https://www.opengraph.xyz/))
