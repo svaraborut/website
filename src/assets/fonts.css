@@ -2,17 +2,17 @@
 
 @font-face {
     font-family: 'Sen';
-    src: url(/fonts/sen-regular.otf) format('opentype');
+    src: url(fonts/sen4.otf) format('opentype');
 }
 
 @font-face {
     font-family: 'Sen';
-    src: url(/fonts/sen-bold.otf) format('opentype');
+    src: url(fonts/sen7.otf) format('opentype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: 'Sen';
-    src: url(/fonts/sen-extrabold.otf) format('opentype');
+    src: url(fonts/sen8.otf) format('opentype');
     font-weight: 800;
 }

@@ -1,15 +1,8 @@
-import React, { ReactNode } from 'react';
-import {
-    BoltIcon,
-    CircleStackIcon,
-    CloudIcon,
-    FireIcon,
-    LightBulbIcon,
-    WrenchScrewdriverIcon
-} from '@heroicons/react/24/outline';
-import { ReactComponentLike } from 'prop-types';
-import { SpanFlash } from '@/components/SpanFlash';
-import { Container } from '@/components/Container';
+import React from 'react';
+import { CircleStackIcon, CloudIcon, FireIcon, LightBulbIcon } from '@heroicons/react/24/outline';
+import type { ReactComponentLike } from 'prop-types';
+import { Container } from '@comp/Container.tsx';
+
 
 export interface SecSkillsetItem {
     Icon: ReactComponentLike
@@ -56,13 +49,13 @@ export function SecSkillset() {
     }
 
     return (
-        <Container className='py-32 text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-24'>
+        <Container className='grid grid-cols-1 gap-24 py-32 text-white sm:grid-cols-2 lg:grid-cols-3'>
 
             <div className='sm:col-span-2 lg:col-span-1 lg:row-span-2'>
-                <p className='text-5xl md:text-6xl font-bold max-w-3xl mb-16'>
+                <p className='mb-16 max-w-3xl text-5xl font-bold md:text-6xl'>
                     Skillset
                 </p>
-                <p className='text-lg text-gray-500 mb-4'>
+                <p className='mb-4 text-lg text-gray-500'>
                     I spent the past 10 year perfecting my skills to master any modern tech challenge.
                     {/*With skills in over 4 different fields of design,*/}
                     {/*I am the perfect person to hire when it comes to a full fledged project.*/}
@@ -71,11 +64,11 @@ export function SecSkillset() {
             </div>
 
             {props.exps.map((ex, ix) => (
-                <div key={ix} className='space-y-6 group'>
+                <div key={ix} className='group space-y-6'>
                     {/*<ex.Icon className='w-16 h-16 text-gray-400 group-hover:text-pink-600 transition duration-500' />*/}
-                    <ex.Icon className='w-14 h-14 text-pink-600 group-hover:text-fuchsia-600 transition duration-500' />
+                    <ex.Icon className='h-14 w-14 text-pink-600 transition duration-500 group-hover:text-fuchsia-600' />
                     <p className='text-2xl font-bold leading-none'>{ex.title}</p>
-                    <p className='text-gray-500 leading-relaxed'>{ex.description}</p>
+                    <p className='leading-relaxed text-gray-500'>{ex.description}</p>
                 </div>
             ))}
 

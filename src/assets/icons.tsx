@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+import { type SVGProps } from 'react';
 
 // https://github.com/ionic-team/ionicons/blob/main/src/svg/logo-linkedin.svg
 export function LinkedinIcons(props: SVGProps<SVGSVGElement>) {

@@ -1,24 +1,23 @@
 import React, { useMemo } from 'react';
-import { SocialLinks } from '@/components/SocialLinks';
-import { Container } from '@/components/Container';
-import { HOSTNAME, HOSTNAME_ALL } from '@/conf'
+import { Container } from '@comp/Container.tsx';
+import { HOSTNAME, HOSTNAME_ALL } from '../conf.ts';
+import { SocialLinks } from '@comp/SocialLinks.tsx';
 
 export function Footer() {
 
     const year = useMemo(() => (new Date()).getFullYear(), [])
 
     return (
-        <Container className='bg-zinc-900 pt-32 pb-16 text-white space-y-16'>
+        <Container className='space-y-16 bg-zinc-900 pb-16 pt-32 text-white'>
 
-
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24'>
-                <p className='col-span-1 lg:col-span-2 xl:col-span-1 text-5xl md:text-6xl font-bold max-w-3xl'>
+            <div className='grid grid-cols-1 gap-24 md:grid-cols-2 lg:grid-cols-3'>
+                <p className='col-span-1 max-w-3xl text-5xl font-bold md:text-6xl lg:col-span-2 xl:col-span-1'>
                     {HOSTNAME.name}
                 </p>
                 <div className='-mx-2 xl:hidden'>
                     <SocialLinks compact />
                 </div>
-                <div className='hidden col-span-2 xl:flex items-center justify-end'>
+                <div className='col-span-2 hidden items-center justify-end xl:flex'>
                     <SocialLinks compact horizontal />
                 </div>
             </div>

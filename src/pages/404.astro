@@ -1,0 +1,28 @@
+---
+import Layout from '../components/Layout.astro';
+import { Container } from '../components/Container';
+import { SpanFlash } from '../components/SpanFlash';
+---
+<Layout>
+    <Container className='bg-zinc-900 text-white'>
+        <div class='h-2 w-full bg-gradient-to-r from-pink-600 to-fuchsia-600'/>
+
+        <div class='py-32 lg:py-48 grid grid-cols-1 gap-8 xl:gap-24'>
+
+            <p class='lg:col-span-2 text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold max-w-3xl mb-16'>
+                <SpanFlash>404</SpanFlash>
+                <br/>Nothing here
+            </p>
+
+            <div>
+                <a
+                    class='p-4 lg:p-8 text-xl lg:text-2xl bg-gradient-to-r from-pink-600 to-fuchsia-600 text-white rounded'
+                    href="/"
+                >
+                    Go Back Home
+                </a>
+            </div>
+
+        </div>
+    </Container>
+</Layout>

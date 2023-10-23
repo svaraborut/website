@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
-import { GitHubIcon, LinkedinIcons, OnlyFansIcon, StackOverflowIcon } from '@/components/icons';
+import React, { type ReactNode } from 'react';
+
 import { BuildingOffice2Icon } from '@heroicons/react/24/outline';
-import { ReactComponentLike } from 'prop-types';
-import classNames from 'classnames';
-import { SpanFlash } from '@/components/SpanFlash';
+import { type ReactComponentLike } from 'prop-types';
+import { GitHubIcon, LinkedinIcons, StackOverflowIcon } from '@assets/icons.tsx';
+import { SpanFlash } from '@comp/SpanFlash.tsx';
+import { cn } from '../utils.ts';
 
 export interface HeaderLink {
     Icon: ReactComponentLike
@@ -47,7 +48,7 @@ export function SocialLinks(
         {
             Icon: BuildingOffice2Icon,
             heroicons: true,
-            name: 'Aindo Srl',
+            name: 'Aindo Spa',
             description: <>Where I <SpanFlash>Work</SpanFlash></>,
             url: 'https://aindo.com',
         },
@@ -63,7 +64,7 @@ export function SocialLinks(
 
     return (
         <div
-            className={classNames(
+            className={cn(
                 'flex',
                 {
                     'space-x-2': horizontal && compact,
@@ -75,10 +76,10 @@ export function SocialLinks(
             {links.filter(lk => !compact || !lk.mainOnly).map((lk, ix) => (
                 <a
                     key={ix}
-                    className={classNames(
+                    className={cn(
                         // hover:bg-white/5
                         'group flex items-center transition-all duration-300',
-                        compact ? 'p-2 space-x-4 rounded' : 'p-4 space-x-8 rounded-xl'
+                        compact ? 'space-x-4 rounded p-2' : 'space-x-8 rounded-xl p-4'
                     )}
                     target='_blank'
                     rel='noreferrer'
@@ -86,7 +87,7 @@ export function SocialLinks(
                     onClick={lk.disabled ? (e => e.preventDefault()) : undefined}
                 >
                     <lk.Icon
-                        className={classNames(
+                        className={cn(
                             'shrink-0 grow-0  transition duration-300',
                             {
                                 'group-hover:text-pink-600': lk.heroicons && compact,
@@ -95,18 +96,18 @@ export function SocialLinks(
                                 'group-hover:fill-white': !lk.heroicons && !compact,
                             },
                             lk.heroicons ? 'text-gray-400' : 'fill-gray-400',
-                            compact ? 'w-8 h-8' : 'w-16 h-16'
+                            compact ? 'h-8 w-8' : 'h-16 w-16'
                         )}
                     />
                     <div>
                         <p
-                            className={classNames(
-                                'font-bold text-gray-400 group-hover:text-white transition duration-300',
+                            className={cn(
+                                'font-bold text-gray-400 transition duration-300 group-hover:text-white',
                                 compact ? 'text-xl' : 'text-2xl',
                             )}
                         >{lk.name}</p>
                         {!compact && (
-                            <p className='opacity-0 group-hover:opacity-100 -mb-7 group-hover:mb-0 transition-all duration-300'>{lk.description}</p>
+                            <p className='-mb-7 opacity-0 transition-all duration-300 group-hover:mb-0 group-hover:opacity-100'>{lk.description}</p>
                         )}
                     </div>
                 </a>
