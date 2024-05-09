@@ -29,13 +29,13 @@ export function SecExperiences() {
                 company: 'Xtlan',
                 link: 'https://www.ixtlan-team.si/',
                 role: 'Senior Software Engineer',
-                description: 'I\'ve worked on a variety of interactive tools and computational engines supporting the daily work of the finance ministry.'
+                description: 'I developed a variety of interactive tools and computational engines supporting the daily work of the finance ministry.'
             },
             {
                 company: 'Trumpf',
                 link: 'https://www.trumpf.com/',
                 role: 'Research and Development',
-                description: 'I started my career as a Software Engineer within this leading company, developing automation control units and HMIs.'
+                description: 'I started as a Software Engineer within this leading company, developing automation control units and HMIs.'
             },
         ]
     }
