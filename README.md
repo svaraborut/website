@@ -31,6 +31,22 @@ thereafter permanently present in the built `index.html` file. See [index.astro]
 const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA.substring(0, 7)}`
 ```
 
+## Open Graph Images
+
+To improve SEO and create a nice preview when sharing the website is becoming increasingly important to include the
+OpenGraph image to your website pages. An interesting feature of this project is the automated creation of such images
+at build time. The images are create directly rendering a React component.
+
+This feature is achieved with the creation of a statically compiled Astro `.png` route. This is achieved via:
+
+- `getStaticPaths` creates all the data for the images
+- The data is rendered via `createElement` React function
+- The virtual dom is then converted into an image via `ImageResponse` from `@vercel/og`
+- The image is returned by a statically compiled Astro `GET` route
+
+This multi-stage process results in a collection of static `.png` images available under `./dist/og` after the build
+process.
+
 ## Build & Deployment Automation
 
 The project is build via standard Astro build process `astro build`. The result of building results in a completely
