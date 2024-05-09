@@ -4,10 +4,13 @@ import { Header } from '../components/Header';
 import { SecSkillset } from '../components/SecSkillset';
 import { SecExperiences } from '../components/SecExperiences';
 import { Footer } from '../components/Footer';
+
+const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA.substring(0, 7)}`
+
 ---
 <Layout pageOgImg="/og/ogi_i.png">
     <Header/>
     <SecSkillset/>
     <SecExperiences/>
-    <Footer/>
+    <Footer watermark={watermark}/>
 </Layout>

@@ -5,7 +5,7 @@ import {SocialLinks} from '@comp/SocialLinks.tsx';
 import {SpanFlash} from "@comp/SpanFlash.tsx";
 import {version} from '../../package.json'
 
-export function Footer() {
+export function Footer({ watermark }: { watermark?: string }) {
 
     const year = useMemo(() => (new Date()).getFullYear(), [])
 
@@ -43,7 +43,7 @@ export function Footer() {
 
             <div className='col-span-full flex justify-between text-gray-500'>
                 <p>© Copyright {year.toFixed(0)}</p>
-                <p>v{version} - {HOSTNAME_ALL.map(x => x.name).join(', ')}</p>
+                <p>v{version} - {watermark} - {HOSTNAME_ALL.map(x => x.name).join(', ')}</p>
             </div>
 
         </Container>

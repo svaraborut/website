@@ -3,6 +3,34 @@
 My personal website build with [Astro](https://astro.build/) and automatically deployed
 on [Cloudflare Pages](https://pages.cloudflare.com/) using the free tier.
 
+## Watermarks
+
+The website contains a watermark, included to let the user know which version of the website is currently looking at.
+This feature is very useful for applications that are deployed by automated pipelines as testers and developers are
+always aware of the code version they are using. The application watermark (present in the bottom right corner)
+comprises multiple information that points to the exact codebase that is being served.
+
+```text
+v0.1.2 - none.01234567 - svara.io
+```
+
+The watermark includes the `version` value being extracted from `package.json` within
+the [Footer](./src/components/Footer.tsx) component with:
+
+```typescript
+import {version} from '../../package.json'
+```
+
+followed by the Git branch name and the first 7 characters of the commit SHA1 (standard representation used by GitHub).
+Those values are typically available as environment variables only at build time, making them slightly more tricky to
+extract. Here we extract the environment variables within an `.astro` file header that is fully executed at build time
+and storing the value to the `watermark` variable that is then used to render the static HTML file. The watermark is
+thereafter permanently present in the built `index.html` file. See [index.astro](./src/pages/index.astro)
+
+```typescript
+const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA.substring(0, 7)}`
+```
+
 ## Build & Deployment Automation
 
 The project is build via standard Astro build process `astro build`. The result of building results in a completely
