@@ -1,7 +1,7 @@
 import React from 'react';
-import { CircleStackIcon, CloudIcon, FireIcon, LightBulbIcon } from '@heroicons/react/24/outline';
-import type { ReactComponentLike } from 'prop-types';
-import { Container } from '@comp/Container.tsx';
+import type {ReactComponentLike} from 'prop-types';
+import {Container} from '@comp/Container.tsx';
+import {CloudUploadIcon, DatabaseIcon, LightbulbIcon, SparklesIcon} from "lucide-react";
 
 
 export interface SecSkillsetItem {
@@ -20,22 +20,22 @@ export function SecSkillset() {
     let props: SecSkillsetProps = {
         exps: [
             {
-                Icon: LightBulbIcon,
+                Icon: LightbulbIcon,
                 title: 'Software Architect',
                 description: 'As projects grow in size and complexity a good design and selecting the best technologies is the key to success.'
             },
             {
-                Icon: FireIcon,
+                Icon: SparklesIcon,
                 title: 'Artificial Intelligence',
                 description: 'Working with the wonderful team at Aindo has taught me a lot about the most advanced AI and its use in production.'
             },
             {
-                Icon: CircleStackIcon,
+                Icon: DatabaseIcon,
                 title: 'Big Data',
                 description: 'I\'m focused toward managing and using data at scale, ranging from sub millisecond searches to computation over terabytes.'
             },
             {
-                Icon: CloudIcon,
+                Icon: CloudUploadIcon,
                 title: 'Cloud',
                 description: 'As projects are becoming more demanding, cloud is a crucial piece each company should use and master.'
             },
@@ -66,7 +66,7 @@ export function SecSkillset() {
             {props.exps.map((ex, ix) => (
                 <div key={ix} className='group space-y-6'>
                     {/*<ex.Icon className='w-16 h-16 text-gray-400 group-hover:text-pink-600 transition duration-500' />*/}
-                    <ex.Icon className='h-14 w-14 text-pink-600 transition duration-500 group-hover:text-fuchsia-600' />
+                    <ex.Icon strokeWidth={1.3} className='h-14 w-14 text-pink-600 transition duration-500 group-hover:text-fuchsia-600' />
                     <p className='text-2xl font-bold leading-none'>{ex.title}</p>
                     <p className='leading-relaxed text-gray-500'>{ex.description}</p>
                 </div>

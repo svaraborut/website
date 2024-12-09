@@ -1,10 +1,9 @@
-import React, { type ReactNode } from 'react';
-
-import { BuildingOffice2Icon } from '@heroicons/react/24/outline';
-import { type ReactComponentLike } from 'prop-types';
-import { GitHubIcon, LinkedinIcons, StackOverflowIcon } from '@assets/icons.tsx';
-import { SpanFlash } from '@comp/SpanFlash.tsx';
-import { cn } from '../utils.ts';
+import React, {type ReactNode} from 'react';
+import {type ReactComponentLike} from 'prop-types';
+import {GitHubIcon, LinkedinIcons, StackOverflowIcon} from '@assets/icons.tsx';
+import {SpanFlash} from '@comp/SpanFlash.tsx';
+import {cn} from '../utils.ts';
+import {PalmtreeIcon} from "lucide-react";
 
 export interface HeaderLink {
     Icon: ReactComponentLike
@@ -46,7 +45,7 @@ export function SocialLinks(
             url: 'https://stackoverflow.com/users/5424426/newbie',
         },
         {
-            Icon: BuildingOffice2Icon,
+            Icon: PalmtreeIcon,
             heroicons: true,
             name: 'Aindo Spa',
             description: <>Where I <SpanFlash>Work</SpanFlash></>,
@@ -87,6 +86,7 @@ export function SocialLinks(
                     onClick={lk.disabled ? (e => e.preventDefault()) : undefined}
                 >
                     <lk.Icon
+                        strokeWidth={1.3}
                         className={cn(
                             'shrink-0 grow-0  transition duration-300',
                             {

@@ -10,7 +10,6 @@
     "build": "astro build"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.14",
     "@astrojs/react": "^3.0.3",
     "@astrojs/tailwind": "^5.0.2",
     "@types/canvas-multiline-text": "^1.0.0",
@@ -22,6 +21,7 @@
     "canvas": "^2.11.0",
     "canvas-multiline-text": "^1.0.3",
     "clsx": "^2.0.0",
+    "lucide-react": "^0.468.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^1.14.0",
