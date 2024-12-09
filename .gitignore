@@ -2,6 +2,7 @@
 
 # Ide
 .idea
+.astro
 
 # dependencies
 /node_modules

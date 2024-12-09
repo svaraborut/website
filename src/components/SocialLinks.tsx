@@ -12,7 +12,7 @@ export interface HeaderLink {
     disabled?: boolean
     name: string
     description?: ReactNode
-    url: string
+    url?: string
 }
 
 export function SocialLinks(
@@ -47,9 +47,8 @@ export function SocialLinks(
         {
             Icon: PalmtreeIcon,
             heroicons: true,
-            name: 'Aindo Spa',
-            description: <>Where I <SpanFlash>Work</SpanFlash></>,
-            url: 'https://aindo.com',
+            name: 'Desert',
+            description: <>My <SpanFlash>Career Break</SpanFlash></>,
         },
         // {
         //     Icon: OnlyFansIcon,
