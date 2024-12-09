@@ -4,6 +4,7 @@ import { Header } from '../components/Header';
 import { SecSkillset } from '../components/SecSkillset';
 import { SecExperiences } from '../components/SecExperiences';
 import { Footer } from '../components/Footer';
+import {SecRepos} from "../components/SecRepos";
 
 const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA.substring(0, 7)}`
 
@@ -12,5 +13,6 @@ const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES
     <Header/>
     <SecSkillset/>
     <SecExperiences/>
+    <SecRepos />
     <Footer watermark={watermark}/>
 </Layout>
