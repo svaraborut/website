@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ReactComponentLike} from 'prop-types';
 import {Container} from '@comp/Container.tsx';
-import {GitHubBadge, NpmBadge} from "@assets/stackicons.tsx";
+import {GitHubBadge, GitHubCopilot, NpmBadge} from "@assets/stackicons.tsx";
 import {ConstructionIcon} from "lucide-react";
 
 
@@ -30,11 +30,17 @@ export function SecRepos() {
                 url: 'https://www.npmjs.com/package/@reactit/hooks'
                 // stack: [TypeScriptBadge, ReactBadge]
             },
+            // {
+            //     Icon: GitHubBadge,
+            //     title: '@reactit/async',
+            //     description: 'React hooks to streamline async actions.',
+            //     url: 'https://github.com/svaraborut/reactit-async'
+            // },
             {
-                Icon: GitHubBadge,
-                title: '@reactit/async',
-                description: 'React hooks to streamline async actions.',
-                url: 'https://github.com/svaraborut/reactit-async'
+                Icon: GitHubCopilot,
+                title: 'watermark',
+                description: 'GitHub action for professional CI/CD watermarks',
+                url: 'https://github.com/marketplace/actions/build-watermark',
             },
             {
                 Icon: GitHubBadge,
