@@ -7,7 +7,7 @@ import { Footer } from '../components/Footer';
 import {SecRepos} from "../components/SecRepos";
 
 // todo : move repo to github actions and use @svaraborut/watermarks
-const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA.substring(0, 7)}`
+const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA?.substring(0, 7)}`
 
 ---
 <Layout pageOgImg="/og/ogi_i.png">
