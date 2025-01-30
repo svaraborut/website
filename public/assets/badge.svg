@@ -1,0 +1,24 @@
+<svg width="92" height="20" aria-label="by: svara.io" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath clipPathUnits="userSpaceOnUse" id="b">
+      <rect width="76" height="20" rx="3" fill="#fff"/>
+    </clipPath>
+      <clipPath clipPathUnits="userSpaceOnUse" id="a">
+      <rect width="76" height="20" rx="3" fill="#fff"/>
+    </clipPath>
+  </defs>
+    <path fill="#555" clip-path="url(#a)" style="fill:#343b42;fill-opacity:1" d="M0 0h39v20H0z"/>
+    <path fill="#db2777" clip-path="url(#b)" transform="translate(16)" d="M23 0h53v20H23z"/>
+    <g fill="#fff" text-anchor="middle" font-family="Verdana, Geneva, 'DejaVu Sans', sans-serif" text-rendering="geometricPrecision" font-size="110">
+    <text aria-hidden="true" x="125" y="150" fill="#010101" fill-opacity=".3" textLength="130" transform="matrix(.1 0 0 .1 16.77 -.52)">by</text>
+        <text x="125" y="140" textLength="130" transform="matrix(.1 0 0 .1 16.77 -.52)">by</text>
+        <text aria-hidden="true" x="485" y="150" fill="#010101" fill-opacity=".3" textLength="430" transform="matrix(.1 0 0 .1 16.77 -.52)">svara.io</text>
+        <text x="485" y="140" textLength="430" transform="matrix(.1 0 0 .1 16.77 -.52)">svara.io</text>
+  </g>
+    <g transform="rotate(45 -563.6 -1322.18) scale(.80591)" style="fill:#959da5;fill-opacity:1">
+    <rect style="opacity:1;fill:#959da5;fill-opacity:1;stroke:none;stroke-width:.529167;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:.0980392" width="4.48" height="10.42" x="971.87" y="-987.69" ry="2.24"/>
+        <rect ry="2.24" y="-975.41" x="971.87" height="10.42" width="4.48" style="opacity:1;fill:#959da5;fill-opacity:1;stroke:none;stroke-width:.529167;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:.0980392"/>
+        <rect ry="2.24" y="-981.55" x="965.73" height="10.42" width="4.48" style="opacity:1;fill:#959da5;fill-opacity:1;stroke:none;stroke-width:.529167;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:.0980392"/>
+        <rect ry="2.24" y="-981.55" x="978.02" height="10.42" width="4.48" style="opacity:1;fill:#959da5;fill-opacity:1;stroke:none;stroke-width:.529167;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:.0980392"/>
+  </g>
+</svg>
