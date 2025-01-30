@@ -5,6 +5,7 @@ import { SecSkillset } from '../components/SecSkillset';
 import { SecExperiences } from '../components/SecExperiences';
 import { Footer } from '../components/Footer';
 import {SecRepos} from "../components/SecRepos";
+import { SecExp } from '../components/SecExp'
 
 // todo : move repo to github actions and use @svaraborut/watermarks
 const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA?.substring(0, 7)}`
@@ -13,7 +14,8 @@ const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES
 <Layout pageOgImg="/og/ogi_i.png">
     <Header/>
     <SecSkillset/>
-    <SecExperiences/>
     <SecRepos />
+    <SecExperiences/>
+    <SecExp />
     <Footer watermark={watermark}/>
 </Layout>
