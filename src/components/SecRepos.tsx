@@ -39,7 +39,7 @@ export function SecRepos() {
             {
                 Icon: GitHubCopilot,
                 title: 'watermark',
-                description: 'GitHub action for professional CI/CD watermarks',
+                description: 'GitHub action for professional CI/CD watermarks.',
                 url: 'https://github.com/marketplace/actions/build-watermark',
             },
             {
