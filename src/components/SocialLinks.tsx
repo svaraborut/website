@@ -3,11 +3,11 @@ import {type ReactComponentLike} from 'prop-types';
 import {GitHubIcon, LinkedinIcons, StackOverflowIcon} from '@assets/icons.tsx';
 import {SpanFlash} from '@comp/SpanFlash.tsx';
 import {cn} from '../utils.ts';
-import {PalmtreeIcon} from "lucide-react";
+import { Building2Icon, PalmtreeIcon } from 'lucide-react'
 
 export interface HeaderLink {
     Icon: ReactComponentLike
-    heroicons?: boolean
+    lucide?: boolean
     mainOnly?: boolean
     disabled?: boolean
     name: string
@@ -44,11 +44,25 @@ export function SocialLinks(
             description: <>Where I <SpanFlash>Share</SpanFlash></>,
             url: 'https://stackoverflow.com/users/5424426/newbie',
         },
+        // {
+        //     Icon: Building2Icon,
+        //     lucide: true,
+        //     name: 'Aindo Spa',
+        //     description: <>Where I <SpanFlash>Work</SpanFlash></>,
+        //     url: 'https://aindo.com',
+        // },
+        // {
+        //     Icon: PalmtreeIcon,
+        //     lucide: true,
+        //     name: 'Desert',
+        //     description: <>My <SpanFlash>Career Break</SpanFlash></>,
+        // },
         {
-            Icon: PalmtreeIcon,
-            heroicons: true,
-            name: 'Desert',
-            description: <>My <SpanFlash>Career Break</SpanFlash></>,
+            Icon: Building2Icon,
+            lucide: true,
+            name: 'Docebo',
+            description: <>Where I <SpanFlash>Work</SpanFlash></>,
+            url: 'https://www.docebo.com/',
         },
         // {
         //     Icon: OnlyFansIcon,
@@ -89,12 +103,12 @@ export function SocialLinks(
                         className={cn(
                             'shrink-0 grow-0  transition duration-300',
                             {
-                                'group-hover:text-pink-600': lk.heroicons && compact,
-                                'group-hover:fill-pink-600': !lk.heroicons && compact,
-                                'group-hover:text-white': lk.heroicons && !compact,
-                                'group-hover:fill-white': !lk.heroicons && !compact,
+                                'group-hover:text-pink-600': lk.lucide && compact,
+                                'group-hover:fill-pink-600': !lk.lucide && compact,
+                                'group-hover:text-white': lk.lucide && !compact,
+                                'group-hover:fill-white': !lk.lucide && !compact,
                             },
-                            lk.heroicons ? 'text-gray-400' : 'fill-gray-400',
+                            lk.lucide ? 'text-gray-400' : 'fill-gray-400',
                             compact ? 'h-8 w-8' : 'h-16 w-16'
                         )}
                     />

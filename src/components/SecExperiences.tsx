@@ -20,10 +20,16 @@ export function SecExperiences() {
     let props: SecExperiencesProps = {
         exps: [
             {
+                company: 'Docebo',
+                link: 'https://www.docebo.com/',
+                role: 'Director of AI Engineering',
+                description: 'I lead the tech team focused on building AI features, and pioneering practical applications of AI into LMS.'
+            },
+            {
                 company: 'Aindo',
                 link: 'https://www.aindo.com/',
                 role: 'Chief Technology Officer',
-                description: 'I currently am leading a young team of very talented people toward disruptive innovations in the AI field.'
+                description: 'I was leading a young team of very talented people toward disruptive innovations in the AI field.'
             },
             {
                 company: 'Xtlan',
@@ -31,12 +37,12 @@ export function SecExperiences() {
                 role: 'Senior Software Engineer',
                 description: 'I developed a variety of interactive tools and computational engines supporting the daily work of the finance ministry.'
             },
-            {
-                company: 'Trumpf',
-                link: 'https://www.trumpf.com/',
-                role: 'Research and Development',
-                description: 'I started as a Software Engineer within this leading company, developing automation control units and HMIs.'
-            },
+            // {
+            //     company: 'Trumpf',
+            //     link: 'https://www.trumpf.com/',
+            //     role: 'Research and Development',
+            //     description: 'I started as a Software Engineer within this leading company, developing automation control units and HMIs.'
+            // },
         ]
     }
 
