@@ -1,21 +1,32 @@
 ---
-import Layout from '../components/Layout.astro';
-import { Header } from '../components/Header';
+import Body from '../layouts/Body.astro'
 import { SecSkillset } from '../components/SecSkillset';
 import { SecExperiences } from '../components/SecExperiences';
-import { Footer } from '../components/Footer';
-import {SecRepos} from "../components/SecRepos";
+import { SecRepos } from '../components/SecRepos';
 import { SecExp } from '../components/SecExp'
-
-// todo : move repo to github actions and use @svaraborut/watermarks
-const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA?.substring(0, 7)}`
-
+import Footer from '../layouts/Footer.astro'
+import Hero from '../layouts/Hero.astro'
+import { SpanFlash } from '../components/SpanFlash'
+import { SocialLinks } from '../components/SocialLinks'
+import React from 'react'
 ---
-<Layout pageOgImg="/og/ogi_i.png">
-    <Header/>
+<Body pageOgImg='/og/ogi_i.png'>
+    <Hero>
+        <div class='grid grid-cols-1 gap-8 lg:grid-cols-3 xl:grid-cols-3 xl:gap-24'>
+            <p class='mb-16 max-w-3xl text-6xl font-bold md:text-7xl lg:col-span-2 lg:text-8xl xl:text-9xl'>
+                I&apos;m Borut Svara
+                <span class='text-gray-500'>, a </span>
+                <SpanFlash>tech</SpanFlash>
+                <span class='text-gray-500'> expert based in Italy.</span>
+            </p>
+            <div class='-mx-4 mb-4 flex flex-col justify-center text-lg text-gray-500 lg:mx-0'>
+                <SocialLinks/>
+            </div>
+        </div>
+    </Hero>
     <SecSkillset/>
     <SecRepos />
     <SecExperiences/>
     <SecExp />
-    <Footer watermark={watermark}/>
-</Layout>
+    <Footer />
+</Body>

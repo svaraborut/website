@@ -1,0 +1,43 @@
+---
+import { Container } from '../components/Container'
+import { HOSTNAME, HOSTNAME_ALL } from '../conf'
+import { SocialLinks } from '../components/SocialLinks'
+import { SpanFlash } from '../components/SpanFlash'
+import { version } from '../../package.json'
+
+// todo : switch to svaraborut/watermark@v1
+const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA?.substring(0, 7)}`
+const year = new Date().getFullYear()
+
+---
+<Container className='space-y-16 bg-zinc-900 pb-16 pt-32 text-white'>
+
+    <div class='grid grid-cols-1 gap-24 md:grid-cols-2 lg:grid-cols-3'>
+        <p class='col-span-1 max-w-3xl text-5xl font-bold md:text-6xl lg:col-span-2 xl:col-span-1'>
+            {HOSTNAME.name}
+        </p>
+        <div class='-mx-2 xl:hidden'>
+            <SocialLinks compact />
+        </div>
+        <div class='col-span-2 hidden items-center justify-end xl:flex'>
+            <SocialLinks compact horizontal />
+        </div>
+    </div>
+
+    <div class='text-md text-gray-500'>
+        <p>
+            Interested in how this simple website is done?&nbsp;
+            <SpanFlash>
+                <a href='https://github.com/svaraborut/website' target='_blank'>
+                    Check out the repository
+                </a>
+            </SpanFlash>
+        </p>
+    </div>
+
+    <div class='col-span-full flex justify-between text-gray-500'>
+        <p>© Copyright {year.toFixed(0)}</p>
+        <p>v{version} - {watermark} - {HOSTNAME_ALL.map(x => x.name).join(', ')}</p>
+    </div>
+
+</Container>
