@@ -11,5 +11,5 @@
   "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^@comp/(.*)$", "^@net/(.*)$", "^@pages/(.*)$", "^@utils/(.*)$", "^[./]", "^@test/(.*)$", "^ace-builds/(.*)$"],
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
-  "plugins": ["@trivago/prettier-plugin-sort-imports"]
+  "plugins": []
 }

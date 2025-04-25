@@ -12,6 +12,8 @@
   "dependencies": {
     "@astrojs/react": "^3.0.3",
     "@astrojs/tailwind": "^5.0.2",
+    "@reactit/hooks": "^0.1.16",
+    "@svara/webimg": "^0.1.0-canary.2",
     "@types/canvas-multiline-text": "^1.0.0",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
@@ -22,6 +24,7 @@
     "canvas-multiline-text": "^1.0.3",
     "clsx": "^2.0.0",
     "lucide-react": "^0.468.0",
+    "qr.js": "^0.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^1.14.0",
