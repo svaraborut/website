@@ -16,7 +16,7 @@ export function getStaticPaths() {
             },
             props: {
                 title: 'I\'m Borut Svara',
-                description: 'a tech expert based in Italy.',
+                description: 'a tech expert based in UAE.',
             } as OgiProps
         }
     ]

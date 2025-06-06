@@ -14,7 +14,7 @@ export function Header() {
                     I&apos;m Borut Svara
                     <span className='text-gray-500'>, a </span>
                     <SpanFlash>tech</SpanFlash>
-                    <span className='text-gray-500'> expert based in Italy.</span>
+                    <span className='text-gray-500'> expert based in UAE.</span>
                 </p>
                 <div className='-mx-4 mb-4 flex flex-col justify-center text-lg text-gray-500 lg:mx-0'>
                     <SocialLinks/>
