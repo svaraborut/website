@@ -1,12 +1,12 @@
 {
-    "name": "svara-website",
-    "compatibility_date": "2025-04-04",
-    "workers_dev": false,
-    "preview_urls": false,
-    "routes": [
-      {
-        "pattern": "svara.io",
-        "custom_domain": true
-      }
-    ]
+  "name": "svara-website",
+  "compatibility_date": "2025-04-04",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "svara.io",
+      "custom_domain": true
+    }
+  ]
 }
