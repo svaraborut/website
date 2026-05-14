@@ -8,5 +8,9 @@
       "pattern": "svara.io",
       "custom_domain": true
     }
-  ]
+  ],
+  "assets": {
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash"
+  }
 }
