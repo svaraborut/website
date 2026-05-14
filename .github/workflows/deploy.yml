@@ -1,0 +1,43 @@
+name: Publish Docs To CloudFlare
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Publish To CloudFlare
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install
+        run: bun ci
+
+      - name: Watermark
+        id: watermark
+        uses: svaraborut/watermark@v1
+        with:
+          format: 'vVERSION - BRANCH.SHA7.RUN'
+          auto-version: npm
+
+      - name: Build
+        run: bun run build
+        env:
+          VITE_WATERMARK: ${{ steps.watermark.outputs.watermark }}
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

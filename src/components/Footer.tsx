@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react'
 import { Container } from '~/components/Container'
-import { HOSTNAME, HOSTNAME_ALL } from '../conf'
+import { HOSTNAME } from '~/conf'
 import { SocialLinks } from '~/components/SocialLinks'
 import { SpanFlash } from '~/components/SpanFlash'
-import { version } from '../../package.json'
 
-export function Footer({ watermark }: { watermark?: string }) {
+export function Footer() {
     const year = useMemo(() => new Date().getFullYear(), [])
 
     return (
@@ -41,9 +40,7 @@ export function Footer({ watermark }: { watermark?: string }) {
 
             <div className="col-span-full flex justify-between text-gray-500">
                 <p>© Copyright {year.toFixed(0)}</p>
-                <p>
-                    v{version} - {watermark} - {HOSTNAME_ALL.map((x) => x.name).join(', ')}
-                </p>
+                <p>{import.meta.env.VITE_WATERMARK}</p>
             </div>
         </Container>
     )
