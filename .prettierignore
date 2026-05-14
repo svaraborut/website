@@ -1,0 +1,4 @@
+.idea
+.claude
+.gemini
+node_modules/**
