@@ -11,7 +11,9 @@ export function Footer() {
             notchTopLeft={true}
             bottom={
                 <div className="-mt-8 text-end pr-16 text-primary overflow-hidden rounded-b-4xl select-none">
-                    <h1 className="font-bold text-[200px] mt-[100px] leading-[100px] -me-[25px]">svara</h1>
+                    <h1 className="font-bold text-[140px] md:text-[200px] mt-[100px] leading-[80px] md:leading-[100px] -me-[50px] md:-me-[25px]">
+                        svara
+                    </h1>
                 </div>
             }
             className="mb-8 relative overflow-hidden"

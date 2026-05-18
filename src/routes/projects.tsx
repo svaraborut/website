@@ -80,7 +80,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
             {/* Featured AI infrastructure */}
             <SectionRepo
                 direction="column1"
-                className="py-32"
+                className="md:py-32"
                 section="FEATURED"
                 title={<>Agent infrastructure I keep coming back to.</>}
                 description={
@@ -110,7 +110,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
 
             {/* Packages */}
             <SectionRepo
-                className="py-32"
+                className="pt-24 md:pb-32"
                 title={<>Packages</>}
                 description={
                     <>

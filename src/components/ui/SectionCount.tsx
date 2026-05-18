@@ -18,11 +18,14 @@ export function SectionCount({ children, ...rest }: SectionCountProps) {
     return (
         <Section {...rest}>
             <div
-                className={cn('grid grid-cols-1 gap-24 sm:grid-cols-2', children.length % 2 === 1 && 'lg:grid-cols-3')}
+                className={cn(
+                    'grid grid-cols-1 gap-16 md:gap-24 sm:grid-cols-2',
+                    children.length % 2 === 1 && 'lg:grid-cols-3'
+                )}
             >
                 {children.map((p, ix) => (
                     <div key={ix} className="space-y-6">
-                        <p className="text-[8rem] leading-none text-gray-600">0{(ix + 1).toFixed(0)}</p>
+                        <p className="text-[6rem] md:text-[8rem] leading-none text-gray-600">0{(ix + 1).toFixed(0)}</p>
                         {p.category && (
                             <p className="text-sm font-bold uppercase tracking-wider text-gray-500">
                                 {p.category?.toUpperCase()}

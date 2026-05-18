@@ -59,7 +59,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
 
             {/* Engagement shapes */}
             <Section
-                className="py-32"
+                className="md:py-32"
                 section="OFFERING"
                 title={<>Fractional AI leadership, with two ways to start smaller.</>}
                 description={

@@ -41,19 +41,19 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                     <div className="space-y-8">
                         <p>
                             Day to day I architect and ship AI systems for clients and partners. Agent platforms, RAG
-                            infrastructure, automation that quietly runs in production. Some of that work is as a{' '}
+                            infrastructure, automation that quietly runs in production. Most of that work is as a{' '}
                             <Link to="/fractional" className="text-primary hover:opacity-80 transition-opacity">
                                 fractional Head of AI
                             </Link>{' '}
                             for engineering-led teams. The rest as a hands-on builder embedded in a delivery sprint.
                         </p>
                         <p>
-                            I take a small number of engagements a year, mostly across Europe and the GCC. The pieces
+                            I take a small number of engagements a year, mostly across Europe and the GCC. Small pieces
                             that are not under NDA end up on the{' '}
                             <Link to="/projects" className="text-primary hover:opacity-80 transition-opacity">
                                 projects page
                             </Link>
-                            , and the lessons that generalize end up in writing.
+                            .{/* todo : blog - , and the lessons that generalize end up in writing.*/}
                         </p>
                     </div>
                 }
@@ -61,7 +61,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
 
             {/* Track record */}
             <SectionCount
-                className="py-32"
+                className="md:pt-24 pb-32"
                 text="wide"
                 section="TRACK RECORD"
                 title={<>Some of the companies I have led AI work for.</>}
