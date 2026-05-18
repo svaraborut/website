@@ -1,8 +1,22 @@
 @import 'tailwindcss';
-@import 'fonts.css';
+
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/700.css";
+
+@theme {
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-sans: 'Space Grotesk', sans-serif;
+    --font-mono: 'Space Grotesk', monospace;
+
+    --color-background: #010202;
+    --color-foreground: #ffffff;
+    --color-primary: #d6ff20;
+    --color-primary-fg: #010202;
+    --color-secondary: #1b2b24;
+    --color-secondary-fg: #ffffff;
+}
 
 html,
 body {
-    @apply bg-neutral-900;
-    font-family: 'Sen', sans-serif;
+    @apply bg-background text-foreground;
 }

@@ -1,6 +1,6 @@
 import type { Route } from './+types/index'
 import { createMeta } from '~/lib/og'
-import { Container } from '~/components/Container'
+import { Container } from '~/components/ui/Container'
 import { SpanFlash } from '~/components/SpanFlash'
 
 export function meta({ loaderData }: Route.MetaArgs) {
@@ -12,9 +12,6 @@ export function meta({ loaderData }: Route.MetaArgs) {
         url: '/'
     })
 }
-
-// todo : move repo to github actions and use @svaraborut/watermarks
-const watermark = `${import.meta.env.CF_PAGES_BRANCH}.${import.meta.env.CF_PAGES_COMMIT_SHA?.substring(0, 7)}`
 
 export default function Page() {
     return (
