@@ -21,7 +21,7 @@ export function Section({ direction = 'row', text, section, title, description, 
                     <div className={cn('max-w-4xl flex flex-col gap-12', isCol1 && 'lg:col-span-2')}>
                         <h1
                             className={cn(
-                                'text-5xl font-bold md:text-6xl',
+                                'text-4xl font-bold sm:text-5xl md:text-6xl text-balance',
                                 text === 'wide' ? 'max-w-4xl' : 'max-w-2xl'
                             )}
                         >

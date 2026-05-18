@@ -44,7 +44,12 @@ function RepoTag({ className, tag }: { className?: string } & RepoItem) {
 export function SectionRepo({ children, direction = 'column', ...rest }: SectionRepoProps) {
     return (
         <Section direction={direction} {...rest}>
-            <div className={cn('grid grid-cols-1 gap-24 sm:grid-cols-2', direction === 'column1' && 'lg:grid-cols-1')}>
+            <div
+                className={cn(
+                    'grid grid-cols-1 gap-16 md:gap-24 sm:grid-cols-2',
+                    direction === 'column1' && 'lg:grid-cols-1'
+                )}
+            >
                 {children.map((ex, ix) => (
                     <a key={ix} className="group flex gap-6" href={ex.url} target="_blank">
                         <RepoIcon
