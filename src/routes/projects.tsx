@@ -3,7 +3,7 @@ import { createMeta } from '~/lib/og'
 import { Footer } from '~/components/sections/Footer'
 import { Header } from '~/components/sections/Header'
 import React from 'react'
-import { SectionRepo } from '~/components/ui/SectionRepo'
+import { type RepoItem, SectionRepo } from '~/components/ui/SectionRepo'
 import { Section } from '~/components/ui/Section'
 import { Container } from '~/components/ui/Container'
 
@@ -18,12 +18,42 @@ export function meta({ loaderData }: Route.MetaArgs) {
     })
 }
 
+export const projectsFeatured = [
+    {
+        type: 'github',
+        tag: 'ai',
+        title: 'agentapi',
+        description: 'Lightweight bridge that lets AI agents drive any OpenAPI service.',
+        url: 'https://github.com/svaraborut/agentapi'
+    },
+    {
+        type: 'github',
+        tag: 'ai',
+        title: 'diffcp',
+        description: 'Streams AI agent state to the UI as compressed diffs.',
+        url: 'https://github.com/axelered/diffcp'
+    },
+    {
+        type: 'copilot',
+        title: 'watermark',
+        description: 'GitHub Action stamping builds with version, branch, and commit.',
+        url: 'https://github.com/marketplace/actions/build-watermark'
+    },
+    {
+        type: 'github',
+        tag: 'ai',
+        title: 'mcp-app',
+        description: 'Interactive micro-frontends running inside ChatGPT on Cloudflare Workers.',
+        url: 'https://github.com/svaraborut/mcp-app'
+    }
+] as RepoItem[]
+
 export default function Page({ loaderData }: Route.MetaArgs) {
     return (
         <div>
             <Header>
                 <div className="space-y-8">
-                    <h1>Projects</h1>
+                    <h1>git</h1>
                     <p className="text-4xl">What spills out of a working software and AI practice.</p>
                 </div>
             </Header>

@@ -2,19 +2,21 @@ import type { Route } from './+types/index'
 import { createMeta } from '~/lib/og'
 import { Footer } from '~/components/sections/Footer'
 import { Header } from '~/components/sections/Header'
-import { Container } from '~/components/ui/Container'
-import { SocialLinks } from '~/components/SocialLinks'
+import { ContainerNotch } from '~/components/ui/Notch'
 import React from 'react'
-import { CloudUploadIcon, DatabaseIcon, LightbulbIcon, SparklesIcon } from 'lucide-react'
+import { ArrowRightIcon, ArrowUpRightIcon } from 'lucide-react'
+import { Link } from 'react-router'
 import { SectionRepo } from '~/components/ui/SectionRepo'
 import { SectionCount } from '~/components/ui/SectionCount'
-import { SectionItem } from '~/components/ui/SectionItems'
+import { Section } from '~/components/ui/Section'
+import { projectsFeatured } from '~/routes/projects'
 
 export function meta({ loaderData }: Route.MetaArgs) {
     return createMeta({
         type: 'website',
         title: "I'm Borut Svara",
-        description: "I'm Borut Svara, a tech expert based in UAE.",
+        description:
+            'Fractional AI leadership and hands-on engineering for teams shipping into production. Europe and the GCC.',
         image: '/og/ogi_i.png',
         url: '/'
     })
@@ -24,99 +26,45 @@ export default function Page({ loaderData }: Route.MetaArgs) {
     return (
         <>
             <Header>
-                <h1>I'm Borut Svara, a tech expert based in UAE.</h1>
+                <div className="space-y-8">
+                    <h1>I'm Borut Svara.</h1>
+                    <p className="text-4xl">Fractional and hands-on, across Europe and the GCC.</p>
+                </div>
             </Header>
 
-            {/* Social links bar */}
-            <Container className="flex justify-center py-16 text-white">
-                <SocialLinks horizontal />
-            </Container>
-
-            {/* Skills */}
-            <SectionItem
+            {/* About / manifesto */}
+            <Section
                 className="py-32"
-                title={<>Skillset</>}
-                description={<>I spent the past 10 year perfecting my skills to master any modern tech challenge.</>}
-            >
-                {[
-                    {
-                        Icon: LightbulbIcon,
-                        title: 'Software Architect',
-                        description:
-                            'As projects grow in size and complexity a good design and selecting the best technologies is the key to success.'
-                    },
-                    {
-                        Icon: SparklesIcon,
-                        title: 'Artificial Intelligence',
-                        description:
-                            'Working with the wonderful team at Aindo has taught me a lot about the most advanced AI and its use in production.'
-                    },
-                    {
-                        Icon: DatabaseIcon,
-                        title: 'Big Data',
-                        description:
-                            "I'm focused toward managing and using data at scale, ranging from sub millisecond searches to computation over terabytes."
-                    },
-                    {
-                        Icon: CloudUploadIcon,
-                        title: 'Cloud',
-                        description:
-                            'As projects are becoming more demanding, cloud is a crucial piece each company should use and master.'
-                    }
-                    // {
-                    //     Icon: WrenchScrewdriverIcon,
-                    //     title: 'Operations',
-                    //     // todo : write about CI/CD, migrations
-                    //     description: 'Working at Facebook has taught me a lot about how to understand users, solve problems and build great products.'
-                    // },
-                ]}
-            </SectionItem>
+                section="WHAT I DO"
+                title={<>Building AI systems, mostly under NDA.</>}
+                description={
+                    <div className="space-y-8">
+                        <p>
+                            Day to day I architect and ship AI systems for clients and partners. Agent platforms, RAG
+                            infrastructure, automation that quietly runs in production. Some of that work is as a{' '}
+                            <Link to="/fractional" className="text-primary hover:opacity-80 transition-opacity">
+                                fractional Head of AI
+                            </Link>{' '}
+                            for engineering-led teams. The rest as a hands-on builder embedded in a delivery sprint.
+                        </p>
+                        <p>
+                            I take a small number of engagements a year, mostly across Europe and the GCC. The pieces
+                            that are not under NDA end up on the{' '}
+                            <Link to="/projects" className="text-primary hover:opacity-80 transition-opacity">
+                                projects page
+                            </Link>
+                            , and the lessons that generalize end up in writing.
+                        </p>
+                    </div>
+                }
+            />
 
-            {/* Repositories */}
-            <SectionRepo
-                className="py-32"
-                title={<>Packages</>}
-                description={<>I love to build amazing things and when possible share them with the world.</>}
-            >
-                {[
-                    {
-                        type: 'npm',
-                        title: '@reactit/hooks',
-                        description: 'Nice collection oh higher-order React hooks.',
-                        url: 'https://www.npmjs.com/package/@reactit/hooks'
-                    },
-                    // {
-                    //     Icon: GitHubBadge,
-                    //     title: '@reactit/async',
-                    //     description: 'React hooks to streamline async actions.',
-                    //     url: 'https://github.com/svaraborut/reactit-async'
-                    // },
-                    {
-                        type: 'copilot',
-                        title: 'watermark',
-                        description: 'GitHub action for professional CI/CD watermarks.',
-                        url: 'https://github.com/marketplace/actions/build-watermark'
-                    },
-                    {
-                        type: 'github',
-                        title: 'b32',
-                        description: 'Fast Base32 conversion in Node.js RFC4648 compliant.',
-                        url: 'https://github.com/svaraborut/b32'
-                    },
-                    {
-                        type: 'github',
-                        tag: 'wip',
-                        title: 'declined',
-                        description: 'Integrate Stripe in your app to in less than 10 minutes.'
-                    }
-                ]}
-            </SectionRepo>
-
+            {/* Track record */}
             <SectionCount
                 className="py-32"
                 text="wide"
-                section="WORK EXPERIENCE"
-                title={<>Some of the companies I have worked with.</>}
+                section="TRACK RECORD"
+                title={<>Some of the companies I have led AI work for.</>}
             >
                 {[
                     {
@@ -124,63 +72,77 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                         title2: 'Director of AI Engineering',
                         url: 'https://www.docebo.com/',
                         description:
-                            'I lead the tech team focused on building AI features, and pioneering practical applications of AI into LMS.'
+                            'Led the team building AI features for a global learning platform, taking practical applications of LLMs from prototype to enterprise rollout.'
+                    },
+                    {
+                        title: 'Axelered',
+                        title2: 'Chief Artificial Intelligence Officer',
+                        url: 'https://axelered.com/',
+                        description:
+                            'Leading a young, sharp team toward state-of-the-art AI document automation for regulated environments. Taking enterprises from manual review to production-grade AI.'
                     },
                     {
                         title: 'Aindo',
                         title2: 'Chief Technology Officer',
                         url: 'https://www.aindo.com/',
                         description:
-                            'I was leading a young team of very talented people toward disruptive innovations in the AI field.'
-                    },
-                    {
-                        title: 'Xtlan',
-                        title2: 'Senior Software Engineer',
-                        url: 'https://www.ixtlan-team.si/',
-                        description:
-                            'I developed a variety of interactive tools and computational engines supporting the daily work of the finance ministry.'
+                            'Led a young team of very talented people toward disruptive innovations in synthetic data and generative AI for regulated industries.'
                     }
                     // {
-                    //     company: 'Trumpf',
-                    //     link: 'https://www.trumpf.com/',
-                    //     role: 'Research and Development',
-                    //     description: 'I started as a Software Engineer within this leading company, developing automation control units and HMIs.'
-                    // },
+                    //     title: 'Xtlan',
+                    //     title2: 'Senior Software Engineer',
+                    //     url: 'https://www.ixtlan-team.si/',
+                    //     description:
+                    //         'Built a variety of interactive tools and computational engines supporting the daily work of the finance ministry.'
+                    // }
                 ]}
             </SectionCount>
 
-            {/* Stacks */}
+            {/* CTA */}
+            <section id="contact">
+                <a href="mailto:borutsvara@gmail.com" className="group">
+                    <ContainerNotch
+                        className="text-primary-fg"
+                        notchTopRight={
+                            <div className="text-primary p-4">
+                                <ArrowUpRightIcon className="size-18 group-hover:translate-x-6 group-hover:-translate-y-6 transition-all" />
+                            </div>
+                        }
+                    >
+                        <div className="flex flex-col gap-12 py-12 md:py-16">
+                            <p className="max-w-3xl text-4xl font-bold md:text-5xl">
+                                Thinking about fractional AI support, or just want to talk?
+                            </p>
+                            <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
+                                <p className="text-2xl font-bold md:text-3xl">borutsvara@gmail.com</p>
+                            </div>
+                        </div>
+                    </ContainerNotch>
+                </a>
+            </section>
+
+            {/* Featured Projects */}
             <SectionRepo
+                direction="column"
                 className="py-32"
-                title={<>Stacks</>}
-                description={<>Various production tested stacks to build non trivial projects and solutions.</>}
+                title={<>Projects</>}
+                description={
+                    <div className="space-y-4">
+                        <p>
+                            Three small, opinionated bets on how agents should talk to APIs, how their state should
+                            reach the UI, and where they should actually run.
+                        </p>
+                        <Link
+                            to="/projects"
+                            className="text-primary group hover:opacity-90 transition-opacity inline-flex gap-2 items-center"
+                        >
+                            See all projects{' '}
+                            <ArrowRightIcon className="group-hover:translate-x-2 transition-transform" />
+                        </Link>
+                    </div>
+                }
             >
-                {[
-                    {
-                        type: 'github',
-                        title: 'next-cf',
-                        description: 'Filly featured Next.js on edge with Cloudflare Pages.',
-                        url: 'https://github.com/svaraborut/next-cf'
-                    },
-                    {
-                        type: 'github',
-                        title: 'next-i18n',
-                        description: 'Dynamic and SEO compliant i18n on Next.js App Router.',
-                        url: 'https://github.com/svaraborut/next-i18n'
-                    },
-                    {
-                        type: 'github',
-                        title: 'npmsemver',
-                        description: 'Automated GitOps with semantic releases for GitHub.',
-                        url: 'https://github.com/svaraborut/npmsemver'
-                    },
-                    {
-                        type: 'github',
-                        title: 'website',
-                        description: 'Statically built astro website with SEO on Cloudflare.',
-                        url: 'https://github.com/svaraborut/website'
-                    }
-                ]}
+                {projectsFeatured}
             </SectionRepo>
 
             <Footer />

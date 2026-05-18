@@ -2,7 +2,6 @@ import React, { type ReactNode } from 'react'
 import { GitHubIcon, LinkedinIcons, StackOverflowIcon } from '~/assets/icons'
 import { SpanFlash } from '~/components/SpanFlash'
 import { cn } from '~/lib/utils'
-import { Building2Icon } from 'lucide-react'
 
 export interface HeaderLink {
     Icon: any
@@ -44,7 +43,7 @@ const links: HeaderLink[] = [
             </>
         ),
         url: 'https://stackoverflow.com/users/5424426/newbie'
-    },
+    }
     // {
     //     Icon: Building2Icon,
     //     lucide: true,
@@ -58,17 +57,17 @@ const links: HeaderLink[] = [
     //     name: 'Desert',
     //     description: <>My <SpanFlash>Career Break</SpanFlash></>,
     // },
-    {
-        Icon: Building2Icon,
-        lucide: true,
-        name: 'Docebo',
-        description: (
-            <>
-                Where I <SpanFlash>Work</SpanFlash>
-            </>
-        ),
-        url: 'https://www.docebo.com/'
-    }
+    // {
+    //     Icon: Building2Icon,
+    //     lucide: true,
+    //     name: 'Docebo',
+    //     description: (
+    //         <>
+    //             Where I <SpanFlash>Work</SpanFlash>
+    //         </>
+    //     ),
+    //     url: 'https://www.docebo.com/'
+    // }
 ]
 
 export function SocialLinks({ compact = false, horizontal = false }: { compact?: boolean; horizontal?: boolean }) {
@@ -77,7 +76,7 @@ export function SocialLinks({ compact = false, horizontal = false }: { compact?:
             className={cn('flex', {
                 'space-x-2 max-md:flex-col': horizontal && compact,
                 'flex-col space-y-2': !horizontal && compact,
-                'space-x-4 flex-wrap': horizontal && !compact,
+                'space-x-4 flex-wrap justify-center': horizontal && !compact,
                 'flex-col space-y-4': !horizontal && !compact
             })}
         >

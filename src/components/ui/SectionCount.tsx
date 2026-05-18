@@ -29,7 +29,12 @@ export function SectionCount({ children, ...rest }: SectionCountProps) {
                             </p>
                         )}
                         <div>
-                            <a className="text-2xl font-bold leading-snug" href={p.url}>
+                            <a
+                                className="text-2xl font-bold leading-snug"
+                                href={p.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <span className="text-primary">{p.title}</span>
                                 {p.title2 && <>, {p.title2}</>}
                             </a>

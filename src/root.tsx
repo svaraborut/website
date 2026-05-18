@@ -2,6 +2,7 @@ import './assets/global.css'
 import { type ReactNode } from 'react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import type { Route } from './+types/root'
+import PageNotFound from '~/routes/404'
 
 export function Layout({ children }: { children: ReactNode }) {
     return (
@@ -28,22 +29,25 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-    let details = 'An unexpected error occurred.'
-    let stack: string | undefined
-    if (import.meta.env.DEV && error && error instanceof Error) {
-        details = error.message
-        stack = error.stack
+    if (import.meta.env.DEV) {
+        let details = 'An unexpected error occurred.'
+        let stack: string | undefined
+        if (error && error instanceof Error) {
+            details = error.message
+            stack = error.stack
+        }
+        return (
+            <main className="pt-16 p-4 container mx-auto">
+                <h1>Oops!</h1>
+                <p>{details}</p>
+                {stack && (
+                    <pre className="w-full p-4 overflow-x-auto">
+                        <code>{stack}</code>
+                    </pre>
+                )}
+            </main>
+        )
+    } else {
+        return <PageNotFound />
     }
-
-    return (
-        <main className="pt-16 p-4 container mx-auto">
-            <h1>Oops!</h1>
-            <p>{details}</p>
-            {stack && (
-                <pre className="w-full p-4 overflow-x-auto">
-                    <code>{stack}</code>
-                </pre>
-            )}
-        </main>
-    )
 }
