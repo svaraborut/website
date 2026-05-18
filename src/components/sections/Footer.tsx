@@ -14,7 +14,7 @@ export function Footer() {
                     <h1 className="font-bold text-[200px] mt-[100px] leading-[100px] -me-[25px]">svara</h1>
                 </div>
             }
-            className="mb-2 md:mb-8 relative overflow-hidden"
+            className="mb-8 relative overflow-hidden"
         >
             <div className="flex flex-col gap-8 pt-32">
                 <SocialLinks compact horizontal />

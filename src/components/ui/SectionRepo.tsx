@@ -1,9 +1,10 @@
 import { Section, type SectionProps } from '~/components/ui/Section'
-import { ConstructionIcon, LockIcon } from 'lucide-react'
+import { ConstructionIcon, LockIcon, SparklesIcon } from 'lucide-react'
 import React from 'react'
 import { GitHubBadge, GitHubCopilot, NpmBadge } from '~/assets/stackicons'
+import { cn } from '~/lib/utils'
 
-export type RepoTag = 'wip' | 'private'
+export type RepoTag = 'wip' | 'private' | 'ai'
 export type RepoType = 'github' | 'npm' | 'copilot'
 
 export interface RepoItem {
@@ -29,7 +30,9 @@ function RepoIcon({ className, type }: { className?: string } & RepoItem) {
 }
 
 function RepoTag({ className, tag }: { className?: string } & RepoItem) {
-    if (tag === 'wip') {
+    if (tag === 'ai') {
+        return <SparklesIcon className={className} />
+    } else if (tag === 'wip') {
         return <ConstructionIcon className={className} />
     } else if (tag === 'private') {
         return <LockIcon className={className} />
@@ -41,7 +44,7 @@ function RepoTag({ className, tag }: { className?: string } & RepoItem) {
 export function SectionRepo({ children, direction = 'column', ...rest }: SectionRepoProps) {
     return (
         <Section direction={direction} {...rest}>
-            <div className="grid grid-cols-1 gap-24 sm:grid-cols-2">
+            <div className={cn('grid grid-cols-1 gap-24 sm:grid-cols-2', direction === 'column1' && 'lg:grid-cols-1')}>
                 {children.map((ex, ix) => (
                     <a key={ix} className="group flex gap-6" href={ex.url} target="_blank">
                         <RepoIcon
