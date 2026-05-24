@@ -5,6 +5,8 @@ export default [
     index('routes/index.tsx'),
     route('fractional', 'routes/fractional.tsx'),
     route('projects', 'routes/projects.tsx'),
+    route('blog', 'routes/blog.tsx'),
+    route('blog/:slug', 'routes/blog.$slug.tsx'),
     // Other
     route('og/:name', 'routes/$ogi.tsx'),
     route('404', 'routes/404.tsx')

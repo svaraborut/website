@@ -1,0 +1,76 @@
+---
+title: Typed content collections on Cloudflare, the boring way
+date: 2026-05-22
+excerpt: How this blog is built — MDX files, schema-validated frontmatter, zero runtime, Cloudflare-static.
+---
+
+The blog you're reading is the result of about an hour of setup and zero ongoing infrastructure. No CMS, no database, no edge function pulling Markdown from a bucket. Posts are files in this repository, validated at build time, compiled into the bundle, and served by Cloudflare as static HTML.
+
+This is the boring path, and it's the right one for a personal blog.
+
+## The shape
+
+Three pieces do the work:
+
+- **MDX files** under `content/blog/*.mdx` with typed frontmatter.
+- **[Content Collections](https://www.content-collections.dev)** as a Vite plugin that watches the folder, validates each post against a Zod schema, compiles the MDX, and emits a typed module the rest of the app imports from.
+- **[Shiki](https://shiki.style)** via `rehype-pretty-code` for syntax highlighting at build time. No runtime highlighter, no flash of unstyled code.
+
+The whole config fits on a screen:
+
+```ts
+import { defineCollection, defineConfig } from '@content-collections/core'
+import { compileMDX } from '@content-collections/mdx'
+import rehypePrettyCode from 'rehype-pretty-code'
+
+const posts = defineCollection({
+    name: 'posts',
+    directory: 'content/blog',
+    include: '*.mdx',
+    schema: (z) => ({
+        title: z.string(),
+        date: z.string(),
+        excerpt: z.string(),
+        draft: z.boolean().optional().default(false)
+    }),
+    transform: async (document, context) => {
+        const mdx = await compileMDX(context, document, {
+            rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark-default' }]]
+        })
+        const slug = document._meta.fileName.replace(/\.mdx$/, '')
+        return { ...document, slug, mdx }
+    }
+})
+
+export default defineConfig({ collections: [posts] })
+```
+
+That's the whole content layer. Anything you can express in Zod, you can require of a post.
+
+## Drafts you can see
+
+One small trick: drafts should be visible locally and invisible in production. The route loader filters them, not the collection — the collection still compiles drafts so the dev server hot-reloads them.
+
+```ts
+import { allPosts } from 'content-collections'
+
+export function listPosts() {
+    return allPosts
+        .filter((post) => import.meta.env.DEV || !post.draft)
+        .sort((a, b) => b.date.localeCompare(a.date))
+}
+```
+
+`import.meta.env.DEV` is a Vite constant, statically replaced at build time. In the production bundle the filter collapses to `!post.draft` and tree-shakes cleanly.
+
+## Why not a CMS?
+
+The honest answer: I'm the only person writing here, and a git commit is a perfectly good publish button. A CMS adds an account to manage, a bill to pay, an outage to worry about, and a layer between me and the words. None of that helps the writing.
+
+The other honest answer: when I want to embed something weird — a custom React component, a chart, an interactive demo — MDX lets me, and a typical CMS doesn't.
+
+## What this costs
+
+Per month, on Cloudflare's free tier: zero. Per post, in friction: `git commit -m "feat: add new post"`. Per word, in surveillance: none.
+
+That's a setup I can recommend.

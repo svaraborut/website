@@ -24,7 +24,8 @@
       "./.react-router/types"
     ],
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "content-collections": ["./.content-collections/generated"]
     },
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,

@@ -39,6 +39,14 @@ export function Header({ children }: { children?: ReactNode }) {
             >
                 git_
             </NavLink>
+            <NavLink
+                to="/blog"
+                className={({ isActive }) =>
+                    cn('text-4xl cursor-pointer transition-colors', isActive ? 'text-primary' : 'hover:text-primary')
+                }
+            >
+                blog_
+            </NavLink>
         </>
     )
 
