@@ -190,14 +190,14 @@ export default function Page({ loaderData }: Route.MetaArgs) {
             </SectionRepo>
 
             {/* Contacts */}
-            <a href="mailto:borutsvara@gmail.com">
+            <a href="mailto:borut@svara.io">
                 <Container>
                     <div className="flex flex-col gap-12 py-12 md:py-16">
                         <p className="max-w-3xl text-4xl md:text-5xl">
                             Working on something similar, or want a sharp pair of eyes on yours? Drop a line.
                         </p>
                         <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8 text-primary">
-                            <p className="text-2xl font-bold md:text-3xl">borutsvara@gmail.com</p>
+                            <p className="text-2xl font-bold md:text-3xl">borut@svara.io</p>
                         </div>
                     </div>
                 </Container>

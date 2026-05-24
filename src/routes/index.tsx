@@ -100,7 +100,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
 
             {/* CTA */}
             <section id="contact">
-                <a href="mailto:borutsvara@gmail.com" className="group">
+                <a href="mailto:borut@svara.io" className="group">
                     <ContainerNotch
                         className="text-primary-fg"
                         notchTopRight={
@@ -114,7 +114,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                                 Thinking about fractional AI support, or just want to talk?
                             </p>
                             <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
-                                <p className="text-2xl font-bold md:text-3xl">borutsvara@gmail.com</p>
+                                <p className="text-2xl font-bold md:text-3xl">borut@svara.io</p>
                             </div>
                         </div>
                     </ContainerNotch>
