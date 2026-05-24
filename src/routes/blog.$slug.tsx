@@ -44,7 +44,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
                             <span className="rounded bg-secondary px-2 py-0.5 text-primary">draft</span>
                         )}
                     </div>
-                    <h1 className="text-lg text-primary">{post.title}</h1>
+                    <h1 className="text-4xl text-primary">{post.title}</h1>
                 </div>
                 <article className="max-w-3xl">
                     <Mdx code={post.mdx} />

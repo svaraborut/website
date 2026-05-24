@@ -35,7 +35,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
         <div>
             <Header>
                 <div className="space-y-8">
-                    <h1>blog_</h1>
+                    <h1>blog</h1>
                     <p className="text-4xl">Notes from building at the edge of AI and product.</p>
                 </div>
             </Header>

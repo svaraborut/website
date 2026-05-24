@@ -32,7 +32,7 @@ Plain template literals are the wrong primitive for this job.
 
 ## TSX, but for prompts
 
-[`@svara/prompts`](https://www.npmjs.com/package/@svara/prompts) is a tagged-template tag — `ai\`...\`` — that treats a prompt the way TSX treats markup: a first-class structured value with its own rendering rules, not a string the runtime is forced to repair after the fact.
+[`@svara/prompts`](https://www.npmjs.com/package/@svara/prompts) is a tagged-template tag, called as `` `ai`...` ``, that treats a prompt the way TSX treats markup: a first-class structured value with its own rendering rules, not a string the runtime is forced to repair after the fact.
 
 Three things plain literals refuse to do, and this tag does:
 
@@ -66,7 +66,7 @@ const prompt = ai`
 
 Same output. The list bullets stay bullets across multiple items. The quote prefix repeats on every line of `userMessage` and `adminNotes`. The Zod schema renders itself as a JSON-Schema fence. The admin block is `false` when `user.isAdmin` is false, and the blank lines around it collapse.
 
-`ai` is an alias for `prompt` — same function, reads better at call sites. Every `ai\`...\`` returns a plain string, so prompts compose by ordinary interpolation. Conditionals are `&&`. Loops are `.map`. Nothing new to learn.
+`ai` is an alias for `prompt` — same function, reads better at call sites. Every `` `ai`...` `` returns a plain string, so prompts compose by ordinary interpolation. Conditionals are `&&`. Loops are `.map`. Nothing new to learn.
 
 ## Install
 

@@ -5,10 +5,10 @@ import { cn } from '~/lib/utils'
 import { Container } from '~/components/ui/Container'
 
 const NAV_LINKS = [
-    { to: '/', label: 'svara_', mobile: 's_' },
-    { to: '/fractional', label: 'fractional_', mobile: 'f_' },
-    { to: '/projects', label: 'git_', mobile: 'g_' },
-    { to: '/blog', label: 'blog_', mobile: 'b_' }
+    { to: '/', label: 'svara_', mobile: 'sv_' },
+    { to: '/fractional', label: 'fractional_', mobile: 'fr_' },
+    { to: '/projects', label: 'git_', mobile: 'gi_' },
+    { to: '/blog', label: 'blog_', mobile: 'bl_' }
 ] as const
 
 function NavLinks({ mobile }: { mobile?: boolean }) {
