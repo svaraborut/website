@@ -7,6 +7,9 @@ node_modules
 /.react-router/
 /build/
 
+# Content Collections
+/.content-collections/
+
 # dotenv environment variable files
 .env
 .env.local

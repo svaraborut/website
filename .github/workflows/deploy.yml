@@ -4,9 +4,15 @@ on:
   push:
     branches:
       - main
+      - stage
+      - 'stage/**'
 
 permissions:
   contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   publish:
@@ -41,8 +47,34 @@ jobs:
         env:
           VITE_WATERMARK: ${{ steps.watermark.outputs.watermark }}
 
+      - name: Compute deploy command
+        id: cmd
+        env:
+          REF_NAME: ${{ github.ref_name }}
+          SHORT_SHA: ${{ github.sha }}
+        run: |
+          short_sha="${SHORT_SHA:0:7}"
+          msg="${REF_NAME}@${short_sha}"
+          if [ "$REF_NAME" = "main" ]; then
+            command="deploy --message=${msg}"
+          elif [ "$REF_NAME" = "stage" ]; then
+            command="versions upload --preview-alias=stage --message=${msg}"
+          else
+            suffix="${REF_NAME#stage/}"
+            sanitized=$(printf '%s' "$suffix" \
+              | tr '[:upper:]' '[:lower:]' \
+              | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+            alias="stage-${sanitized}"
+            alias="${alias:0:63}"
+            alias="${alias%-}"
+            command="versions upload --preview-alias=${alias} --message=${msg}"
+          fi
+          echo "command=${command}" >> "$GITHUB_OUTPUT"
+          echo "Resolved wrangler command: ${command}"
+
       - name: Publish
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: ${{ steps.cmd.outputs.command }}
