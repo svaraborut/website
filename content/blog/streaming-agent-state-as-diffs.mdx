@@ -4,21 +4,17 @@ date: 2026-03-22
 excerpt: SSE event soup is the wrong primitive for AI UIs. diffcp streams the state itself, as compressed JSON deltas.
 ---
 
-Most teams shipping production AI today are still operating inside a narrow envelope: a message stream, a tool-call stream, maybe a citations stream stapled on the side. It works, but it is also the ceiling. The product surfaces an engineering team can credibly build are bounded by what the wire format makes affordable. When the wire format is a vocabulary of bespoke SSE events, the cost of a new field on the agent's output is a protocol revision, a frontend reducer change, and a regression risk on every existing surface.
+Most production AI surfaces look the same: a message stream, a tool-call stream, maybe citations stapled on. It works, and it is also the ceiling. Adding a new affordance means a new event type, a new reducer case, and a regression risk on every existing screen. Teams that shipped the fourth event type in a week take two months on the eighth.
 
-That cost compounds. The same three-engineer team that ships a fourth event type in a week takes two months on the eighth, because the reducer has become load-bearing for behavior nobody documented. The agent surface stops evolving long before the model does.
-
-The reframing that helps: an agent is not emitting events about its work. It is mutating a structured state that the client should observe. The wire is a transport for that state, not a log of decisions about it.
+The reframe: an agent is not emitting events. It is mutating a structured state the client should observe.
 
 ## Stream the state, not the events
 
-[`diffcp`](https://github.com/axelered/diffcp), Differential Context Protocol, is a small carrier-agnostic protocol built on that reframing. Define the shape your client cares about, mutate it on the server as the agent works, and ship the deltas. Four message types (`init`, `delta`, `done`, `event`). Three diff operations (`s` set, `a` append, `d` delete). NDJSON on the wire by default, MessagePack when bytes matter. Append is a first-class operation, which is the part that makes token-by-token streaming a normal case rather than a special one.
+[`diffcp`](https://github.com/axelered/diffcp) is a small protocol built on that reframe. Define the shape your client cares about, mutate it on the server, ship the deltas. Four message types (`init`, `delta`, `done`, `event`), three diff ops (`s` set, `a` append, `d` delete), NDJSON on the wire. `append` is first-class, which is what makes token streaming a normal case rather than a special one.
 
-Compression is a side effect, not the point: roughly 90% from diffs, another 50% from an optional zero-dependency compression pass. The point is that the frontend reducer disappears, because there is nothing to reduce. The next state arrives already assembled.
+The frontend reducer disappears, because there is nothing to reduce. The next state arrives already assembled.
 
-## What it looks like
-
-Server side, the agent writes a generator that yields snapshots of the shape the client expects:
+## Server
 
 ```ts
 import { ObjectStreamResponse } from '@diffcp/core'
@@ -36,9 +32,9 @@ export function GET() {
 }
 ```
 
-Diffcp computes the deltas between successive snapshots and emits the compact form. The generator never thinks about the wire.
+The generator yields snapshots. diffcp computes the delta. Nothing here knows about the wire.
 
-Client side, the React hook hands the component the current state:
+## Client
 
 ```tsx
 import { useObjectStream } from '@diffcp/react'
@@ -55,17 +51,17 @@ function Chat() {
 }
 ```
 
-No reducer. No event handlers. No `useEffect` chasing message types. The component re-renders as the state evolves.
+That is the API.
 
-## What this changes in practice
+## What this changes for a team
 
-For an engineering organization shipping agents into production, three things move:
+Adding a field is a one-line type change and a one-line render. No protocol negotiation. No reducer to grow. Bugs collapse to one class, "the state is wrong", which a snapshot test catches in seconds.
 
-**Developer throughput on the agent surface.** Adding a field to the agent's output is a one-line change to a type and a one-line render in the component. There is no protocol negotiation between the backend and frontend, because there is no protocol surface to negotiate. Teams that were spending half their cycles on wire-format plumbing get those cycles back for product work.
+The real win is what the team can ship next. Once a new field costs nothing, agent UIs can go past the message-plus-tool envelope: live-updating plans, structured outputs that render as they form, multi-pane workspaces backed by one evolving state, collaborative surfaces where the agent and the user converge in the same model. Products customers notice. Not feasible on a wire format that treats every new affordance as a protocol change.
 
-**Stability under change.** Bespoke SSE vocabularies fail in ways that are hard to test: ordering bugs, missed event types, reducer states that only happen under a specific interleaving. A state-replication protocol fails in one way, which is the state being wrong, and that is a class of bug a snapshot test catches in seconds. The blast radius of a backend change shrinks to the shape of the object, not the order of events about it.
+## The protocol
 
-**The ceiling of what the product can become.** This is the part that matters at the leadership level. Once the cost of a new field is near zero, the team can credibly ship agent UIs that go past the standard message-plus-tool-call envelope: live-updating plans, partial structured outputs that render as they form, multi-pane workspaces where each pane is a subtree of the same evolving state, collaborative surfaces where the agent's state and the user's edits converge in the same model. Those are products customers notice. They are not feasible to build on a wire format that treats every new affordance as a protocol revision.
+NDJSON on the wire, a deliberate subset of JSON Patch for the diffs, framing borrowed from React Server Components streams. Standards where they fit, no invention for invention's sake. And for the cases where something really is an event and not a state change, there is an `event` message type for it.
 
 ## Install
 
@@ -73,4 +69,4 @@ For an engineering organization shipping agents into production, three things mo
 bun add @diffcp/core @diffcp/react
 ```
 
-`@diffcp/core` covers server and client. `@diffcp/react` adds the hook. Source and full docs: [github.com/axelered/diffcp](https://github.com/axelered/diffcp).
+Source and docs: [github.com/axelered/diffcp](https://github.com/axelered/diffcp).
