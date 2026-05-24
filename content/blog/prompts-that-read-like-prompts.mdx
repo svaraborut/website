@@ -1,0 +1,80 @@
+---
+title: Prompts that read like prompts
+date: 2026-05-25
+excerpt: Template literals are the wrong primitive for LLM prompts. A 1KB tagged-template tag fixes it.
+---
+
+Here is a prompt you have probably written. A persona, a multi-line quote from the user, a bulleted list, an optional admin block, and a Zod schema the model has to return:
+
+```ts
+import { zodToJsonSchema } from 'zod-to-json-schema'
+
+const lines = [
+  `  You are a senior reviewer. Be concise.`,
+  ``,
+  `  The user said:`,
+  ...userMessage.split('\n').map(l => `  > ${l}`),
+  ``,
+  `  Tags:`,
+  ...tags.map(t => `  - ${t}`),
+  ``,
+  user.isAdmin ? `  Admin notes:\n${adminNotes.split('\n').map(l => `  > ${l}`).join('\n')}\n` : '',
+  `  Return JSON matching:`,
+  '  ```json',
+  ...JSON.stringify(zodToJsonSchema(Output), null, 2).split('\n').map(l => `  ${l}`),
+  '  ```',
+].filter(Boolean).join('\n').replace(/^ {2}/gm, '')
+```
+
+Every line of that file is fighting the language. The `split('\n').map` exists because a template literal doesn't re-apply the `> ` prefix on the second line of a multi-line value. The `.replace(/^ {2}/gm, '')` exists because the editor indented the static parts and the runtime didn't ask for it. The JSON-fence-around-a-Zod-schema dance exists because `${schema}` would render `[object Object]`.
+
+Plain template literals are the wrong primitive for this job.
+
+## TSX, but for prompts
+
+[`@svara/prompts`](https://www.npmjs.com/package/@svara/prompts) is a tagged-template tag — `ai\`...\`` — that treats a prompt the way TSX treats markup: a first-class structured value with its own rendering rules, not a string the runtime is forced to repair after the fact.
+
+Three things plain literals refuse to do, and this tag does:
+
+1. **Strip common indentation** from the static parts, so prompts can live indented with your code.
+2. **Re-apply the line prefix** of each interpolation to every line of the value. `- ${items}` actually bullets a list. `> ${quote}` actually quotes a multi-line string.
+3. **Render structured values sensibly.** Plain objects become a ` ```json ` fence. Zod schemas (anything with `toJSONSchema()`) render as JSON Schema. Your own classes opt in with a `renderPrompt` symbol.
+
+The whole thing above, rewritten:
+
+```ts
+import { ai } from '@svara/prompts'
+
+const prompt = ai`
+  You are a senior reviewer. Be concise.
+
+  The user said:
+  > ${userMessage}
+
+  Tags:
+  - ${tags}
+
+  ${user.isAdmin && ai`
+    Admin notes:
+    > ${adminNotes}
+  `}
+
+  Return JSON matching:
+  ${Output}
+`
+```
+
+Same output. The list bullets stay bullets across multiple items. The quote prefix repeats on every line of `userMessage` and `adminNotes`. The Zod schema renders itself as a JSON-Schema fence. The admin block is `false` when `user.isAdmin` is false, and the blank lines around it collapse.
+
+`ai` is an alias for `prompt` — same function, reads better at call sites. Every `ai\`...\`` returns a plain string, so prompts compose by ordinary interpolation. Conditionals are `&&`. Loops are `.map`. Nothing new to learn.
+
+## Install
+
+```sh
+bun add @svara/prompts
+# or: npm i @svara/prompts
+```
+
+Zero runtime dependencies. ESM + CJS + types. About 1KB minzipped. Source and full docs: [github.com/svaraborut/prompts](https://github.com/svaraborut/prompts).
+
+If you have ever written `.replace(/^ {2}/gm, '')` at the bottom of a template literal, this is the one-line fix.
