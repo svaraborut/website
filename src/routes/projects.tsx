@@ -22,16 +22,23 @@ export const projectsFeatured = [
     {
         type: 'github',
         tag: 'ai',
-        title: 'agentapi',
-        description: 'Lightweight bridge that lets AI agents drive any OpenAPI service.',
-        url: 'https://github.com/svaraborut/agentapi'
+        title: 'diffcp',
+        description: 'Streams AI agent state to the UI as compressed diffs.',
+        url: 'https://github.com/axelered/diffcp'
     },
     {
         type: 'github',
         tag: 'ai',
-        title: 'diffcp',
-        description: 'Streams AI agent state to the UI as compressed diffs.',
-        url: 'https://github.com/axelered/diffcp'
+        title: 'prompts',
+        description: 'Tagged-template utility for assembling LLM prompts cleanly in TypeScript.',
+        url: 'https://github.com/svaraborut/prompts'
+    },
+    {
+        type: 'github',
+        tag: 'ai',
+        title: 'agentapi',
+        description: 'Lightweight bridge that lets AI agents drive any OpenAPI service.',
+        url: 'https://github.com/svaraborut/agentapi'
     },
     {
         type: 'copilot',
@@ -85,8 +92,8 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                 title={<>Agent infrastructure I keep coming back to.</>}
                 description={
                     <>
-                        Two projects that sit closest to my current work. Small, opinionated bets on how agents should
-                        talk to APIs, how their state should reach the UI, and where they should actually run.
+                        Three projects that sit closest to my current work. Small, opinionated bets on how agents
+                        should talk to APIs, how their state should reach the UI, and how prompts should be written.
                     </>
                 }
             >
@@ -94,16 +101,23 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                     {
                         type: 'github',
                         tag: 'ai',
-                        title: 'agentapi',
-                        description: 'Bridge that lets AI agents drive any OpenAPI service.',
-                        url: 'https://github.com/svaraborut/agentapi'
+                        title: 'diffcp',
+                        description: 'Streams AI agent state to the UI as compressed diffs.',
+                        url: 'https://github.com/axelered/diffcp'
                     },
                     {
                         type: 'github',
                         tag: 'ai',
-                        title: 'diffcp',
-                        description: 'Streams AI agent state to the UI as compressed diffs.',
-                        url: 'https://github.com/axelered/diffcp'
+                        title: 'prompts',
+                        description: 'Tagged-template utility for assembling LLM prompts cleanly in TypeScript.',
+                        url: 'https://github.com/svaraborut/prompts'
+                    },
+                    {
+                        type: 'github',
+                        tag: 'ai',
+                        title: 'agentapi',
+                        description: 'Bridge that lets AI agents drive any OpenAPI service.',
+                        url: 'https://github.com/svaraborut/agentapi'
                     }
                 ]}
             </SectionRepo>
