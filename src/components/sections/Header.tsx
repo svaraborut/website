@@ -4,7 +4,36 @@ import { ContainerNotch } from '~/components/ui/Notch'
 import { cn } from '~/lib/utils'
 import { Container } from '~/components/ui/Container'
 
-export function Header({ children }: { children?: ReactNode }) {
+const NAV_LINKS = [
+    { to: '/', label: 'svara_', mobile: 's_' },
+    { to: '/fractional', label: 'fractional_', mobile: 'f_' },
+    { to: '/projects', label: 'git_', mobile: 'g_' },
+    { to: '/blog', label: 'blog_', mobile: 'b_' }
+] as const
+
+function NavLinks({ mobile }: { mobile?: boolean }) {
+    return (
+        <>
+            {NAV_LINKS.map((link) => (
+                <NavLink
+                    key={link.to}
+                    to={link.to}
+                    end={link.to === '/'}
+                    className={({ isActive }) =>
+                        cn(
+                            'text-4xl cursor-pointer transition-colors',
+                            isActive ? 'text-primary' : 'hover:text-primary'
+                        )
+                    }
+                >
+                    {mobile ? link.mobile : link.label}
+                </NavLink>
+            ))}
+        </>
+    )
+}
+
+export function Header({ children, bare }: { children?: ReactNode; bare?: boolean }) {
     const props = useMemo(
         () => ({
             offsetX: 2 * Math.random() - 1,
@@ -13,50 +42,30 @@ export function Header({ children }: { children?: ReactNode }) {
         []
     )
 
-    const links = (
-        <>
-            <NavLink
-                to="/"
-                className={({ isActive }) =>
-                    cn('text-4xl cursor-pointer transition-colors', isActive ? 'text-primary' : 'hover:text-primary')
-                }
-            >
-                svara_
-            </NavLink>
-            <NavLink
-                to="/fractional"
-                className={({ isActive }) =>
-                    cn('text-4xl cursor-pointer transition-colors', isActive ? 'text-primary' : 'hover:text-primary')
-                }
-            >
-                fractional_
-            </NavLink>
-            <NavLink
-                to="/projects"
-                className={({ isActive }) =>
-                    cn('text-4xl cursor-pointer transition-colors', isActive ? 'text-primary' : 'hover:text-primary')
-                }
-            >
-                git_
-            </NavLink>
-            <NavLink
-                to="/blog"
-                className={({ isActive }) =>
-                    cn('text-4xl cursor-pointer transition-colors', isActive ? 'text-primary' : 'hover:text-primary')
-                }
-            >
-                blog_
-            </NavLink>
-        </>
+    const mobileNav = (
+        <Container className="mt-8 flex flex-row gap-6 md:hidden">
+            <NavLinks mobile />
+        </Container>
     )
+
+    if (bare) {
+        return (
+            <>
+                {mobileNav}
+                <Container className="mt-8 hidden md:flex flex-row gap-8 text-white">
+                    <NavLinks />
+                </Container>
+            </>
+        )
+    }
 
     return (
         <>
-            <Container className="mt-8 flex flex-col gap-4 md:hidden">{links}</Container>
+            {mobileNav}
             <ContainerNotch
                 notchTopLeft={
                     <div className="max-md:hidden relative flex gap-8 text-white pl-6 md:pl-8 xl:pl-16 px-16 py-4 z-10">
-                        {links}
+                        <NavLinks />
                     </div>
                 }
                 notchBottomRight={true}

@@ -34,20 +34,18 @@ export default function Page({ loaderData }: Route.ComponentProps) {
     const { post } = loaderData
     return (
         <div>
-            <Header>
-                <div className="space-y-8">
-                    <div className="flex items-center gap-4 text-base font-normal">
+            <Header bare />
+
+            <Container className="pt-16 pb-32">
+                <div className="max-w-3xl space-y-4 mb-16">
+                    <div className="flex items-center gap-4 text-lg text-gray-300">
                         <time dateTime={post.date}>{formatPostDate(post.date)}</time>
                         {post.draft && (
                             <span className="rounded bg-secondary px-2 py-0.5 text-primary">draft</span>
                         )}
                     </div>
-                    <h1 className="text-4xl">{post.title}</h1>
-                    <p className="text-base font-normal">{post.excerpt}</p>
+                    <h1 className="text-lg text-primary">{post.title}</h1>
                 </div>
-            </Header>
-
-            <Container className="pt-16 pb-32">
                 <article className="max-w-3xl">
                     <Mdx code={post.mdx} />
                 </article>
