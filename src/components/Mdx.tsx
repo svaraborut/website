@@ -60,7 +60,7 @@ const components = {
     pre: ({ className, children, ...rest }: HTMLAttributes<HTMLPreElement>) => (
         <pre
             className={cn(
-                'my-8 overflow-x-auto py-4 pl-4 pr-8 text-base leading-relaxed',
+                'my-8 overflow-x-auto rounded-lg py-4 text-base leading-relaxed [&>code]:block [&>code]:min-w-max [&>code]:px-6',
                 className
             )}
             {...rest}

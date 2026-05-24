@@ -42,8 +42,8 @@ export default function Page({ loaderData }: Route.ComponentProps) {
                             <span className="rounded bg-secondary px-2 py-0.5 text-primary">draft</span>
                         )}
                     </div>
-                    <h1>{post.title}</h1>
-                    <p className="text-4xl font-normal">{post.excerpt}</p>
+                    <h1 className="text-4xl">{post.title}</h1>
+                    <p className="text-base font-normal">{post.excerpt}</p>
                 </div>
             </Header>
 

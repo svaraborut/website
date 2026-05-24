@@ -51,7 +51,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
                                     to={`/blog/${post.slug}`}
                                     className="group flex flex-col gap-4 py-6 transition-colors hover:text-primary"
                                 >
-                                    <div className="flex items-center gap-4 text-black">
+                                    <div className="flex items-center gap-4 text-gray-500">
                                         <time dateTime={post.date}>{formatPostDate(post.date)}</time>
                                         {post.draft && (
                                             <span className="rounded bg-secondary px-2 py-0.5 text-primary">
@@ -62,7 +62,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
                                     <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-balance">
                                         {post.title}
                                     </h2>
-                                    <p className="max-w-3xl text-black">
+                                    <p className="max-w-3xl text-lg text-gray-400 group-hover:text-gray-300">
                                         {post.excerpt}
                                     </p>
                                 </Link>
