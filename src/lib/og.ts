@@ -26,6 +26,7 @@ export function createMeta(options: {
             .map((key) => [key, (options as any)[key]])
             .filter(([_, v]) => !!v)
             .map(([k, v]) => ({ name: `twitter:${k}`, content: v })),
-        { name: 'twitter:card', content: 'summary_large_image' }
+        { name: 'twitter:card', content: 'summary_large_image' },
+        ...(options.url ? [{ tagName: 'link', rel: 'canonical', href: options.url }] : [])
     ]
 }

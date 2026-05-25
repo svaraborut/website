@@ -3,6 +3,32 @@ import { type ReactNode } from 'react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import type { Route } from './+types/root'
 import PageNotFound from '~/routes/404'
+import { HOSTNAME } from '~/conf'
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Person',
+            '@id': `${HOSTNAME.url}/#person`,
+            name: 'Borut Svara',
+            url: HOSTNAME.url,
+            jobTitle: 'Fractional Head of AI',
+            sameAs: [
+                'https://www.linkedin.com/in/borutsvara',
+                'https://github.com/svaraborut',
+                'https://stackoverflow.com/users/5424426/newbie'
+            ]
+        },
+        {
+            '@type': 'WebSite',
+            '@id': `${HOSTNAME.url}/#website`,
+            url: HOSTNAME.url,
+            name: HOSTNAME.name,
+            publisher: { '@id': `${HOSTNAME.url}/#person` }
+        }
+    ]
+}
 
 export function Layout({ children }: { children: ReactNode }) {
     return (
@@ -14,6 +40,11 @@ export function Layout({ children }: { children: ReactNode }) {
                 <meta name="theme-color" content="#171717" />
                 <Meta />
                 <Links />
+                {/* JSON-LD: serialized from a controlled constant, safe to inline */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
             </head>
             <body>
                 {children}
