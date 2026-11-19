@@ -40,3 +40,4 @@ The project includes a [GitHub Action](.github/workflows/deploy.yml) to perform 
 - ❓ Redirect all to home
 - Internationalize
 - Fix SEO
+- 💥 Fix the robots.txt on preview websites

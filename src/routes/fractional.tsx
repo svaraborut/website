@@ -76,7 +76,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                             tag: 'START HERE',
                             title: 'Audit',
                             duration: '3 weeks',
-                            price: '$20k flat',
+                            // price: '$20k flat',
                             description:
                                 'A fixed-scope deep look at where your AI work stands. You leave with an honest assessment, a prioritized 90-day plan your board and your engineers can both work from, and working code spikes and blueprints on the technical paths that were still blurry.'
                         },
@@ -84,7 +84,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                             tag: 'SHIP IT',
                             title: 'Build',
                             duration: '8 to 16 weeks',
-                            price: '$60 to 120k',
+                            // price: '$60 to 120k',
                             description:
                                 'Co-built delivery of one specific AI capability into production. An agent, a RAG platform, an automation pipeline, or a new product surface. I lead architecture and implement the hard parts alongside your team, who own it after I leave.'
                         },
@@ -92,7 +92,7 @@ export default function Page({ loaderData }: Route.MetaArgs) {
                             tag: 'PRIMARY',
                             title: 'Fractional',
                             duration: '3 month minimum',
-                            price: '$16k / mo',
+                            // price: '$16k / mo',
                             description:
                                 'Seven days a month as your fractional Head of AI. I own the AI roadmap, lead hiring for the function, sit in on exec reviews, and carry authority on the AI initiatives that matter. For teams hiring their first AI leader, between hires, or recovering from a stalled AI push.'
                         }
